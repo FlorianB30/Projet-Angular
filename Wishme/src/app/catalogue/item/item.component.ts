@@ -5,8 +5,6 @@ import { ItemService } from 'src/app/shared/services/item.service';
 
 @Component({
   selector: 'app-item',
-  standalone: true,
-  imports: [],
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })

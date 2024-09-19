@@ -1,8 +1,8 @@
 <h2>Catalogue de Cadeaux</h2>
 <ul>
-  <li *ngFor="let item of catalog">
-    <a [routerLink]="['/catalog', item.id]">
-      {{ item.nom }} ({{ item.categorie }})
+  <li *ngFor="let item of catalogue">
+    <a [routerLink]="['/catalogue', item.id]">
+      {{ item.name }} ({{ item.price }})
     </a>
   </li>
 </ul>

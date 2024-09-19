@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
-import { ItemComponent } from './catalogue/item/item/item.component';
+import { ItemComponent } from './catalogue/item/item.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ItemComponent } from './catalogue/item/item/item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
