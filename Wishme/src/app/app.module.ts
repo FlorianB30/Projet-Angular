@@ -6,18 +6,24 @@ import { AppComponent } from './app.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { ItemComponent } from './catalogue/item/item.component';
 import { CommonModule } from '@angular/common';
+import { AddItemComponent } from './catalogue/add-item/add-item.component';
+import { EditItemComponent } from './catalogue/edit-item/edit-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatalogueComponent,
-    ItemComponent
+    ItemComponent,
+    AddItemComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

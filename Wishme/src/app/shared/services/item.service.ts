@@ -15,7 +15,7 @@ export class ItemService {
     return this.http.get<Item[]>(this.apiUrl);
   }
 
-  getItem(id: number): Observable<Item> {
+  getItem(id: string): Observable<Item> {
     return this.http.get<Item>(`${this.apiUrl}/${id}`);
   }
 
@@ -27,7 +27,7 @@ export class ItemService {
     return this.http.put<Item>(`${this.apiUrl}/${item.id}`, item);
   }
 
-  deleteItem(id: number): Observable<void> {
+  deleteItem(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

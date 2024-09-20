@@ -9,7 +9,7 @@ import { ItemService } from 'src/app/shared/services/item.service';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
-  item: Item | undefined;
+  item!: Item;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,11 +17,15 @@ export class ItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadItem(id);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.loadItem(id);
+    } else {
+      console.error('ID is null');
+    }
   }
 
-  loadItem(id: number): void {
+  loadItem(id: string): void {
     this.itemService.getItem(id).subscribe(
       (item) => this.item = item,
       (error) => console.error('Erreur lors du chargement de l\'item', error)
