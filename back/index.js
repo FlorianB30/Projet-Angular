@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid'); 
 const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = 3005;
 const SECRET_KEY = "MySecretKeyFromEnv";
 
 app.use(cors());

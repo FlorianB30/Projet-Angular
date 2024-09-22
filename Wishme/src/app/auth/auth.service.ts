@@ -11,7 +11,7 @@ import { StorageService } from '../shared/services/storage.service';
 
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000'
+  private authUrl = 'http://localhost:3005'
   private tokenKey = 'wishMeToken';
   private userNameSource = new BehaviorSubject<string | null>(null);
   userName$ = this.userNameSource.asObservable();
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   register(user: User): Observable<number> {
-    return this.http.post(`${this.apiUrl}/register`, user, { observe: 'response' }).pipe(
+    return this.http.post(`${this.authUrl}/register`, user, { observe: 'response' }).pipe(
       map(response => {
         return response.status;
       }),
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   login(credentials: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials, { observe: 'response' }).pipe(
+    return this.http.post(`${this.authUrl}/login`, credentials, { observe: 'response' }).pipe(
       map((response: any) => {
         if (response.body.token) {
           this.saveToken(response.body.token);
