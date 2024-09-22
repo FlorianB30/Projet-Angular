@@ -2,14 +2,15 @@
     <div class="logo">WishME
      
     </div>
-  
+
+    <span>{{ "header.welcome" | translate }} {{name}}</span>
     <nav>
       <ul>
         <li><a routerLink="/">Home</a></li>
         <li><a href="#about">À propos</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li *ngIf="!name"><a routerLink="/register">Register</a></li>
+        <li *ngIf="!name"><a routerLink="/register">{{ "header.register" | translate }}</a></li>
       </ul>
     </nav>
   
@@ -22,7 +23,7 @@
       </button>
   
       <div class="lang-selector">
-        <label for="lang">Langage:</label>
+        <label for="lang">Language</label>
         <select id="lang" [(ngModel)]="selectedLangage" (change)="changeLangage()">
           <option *ngFor="let langage of langages" [value]="langage">
             {{ langage }}

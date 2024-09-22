@@ -1,45 +1,45 @@
 form {
     max-width: 400px;
-    margin: 20px auto;
+    margin: 10% auto; /* Augmentation de l'espace vertical */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Styles pour les labels */
-  label {
+}
+
+/* Styles pour les labels */
+label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-  }
-  
-  /* Styles pour les champs de saisie */
-  input {
+}
+
+/* Styles pour les champs de saisie */
+input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s;
-  
+
     &:focus {
-      border-color: #007bff;
-      outline: none;
+        border-color: #007bff;
+        outline: none;
     }
-  }
-  
-  /* Styles pour les messages d'erreur */
-  .register_error {
+}
+
+/* Styles pour les messages d'erreur */
+.register_error {
     color: red;
     margin-top: -10px;
     margin-bottom: 15px;
     font-size: 0.9em;
-  }
-  
-  /* Styles pour le bouton */
-  button {
+}
+
+/* Styles pour le bouton */
+button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -49,25 +49,25 @@ form {
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
-  
+
     &:hover {
-      background-color: #0056b3;
+        background-color: #0056b3;
     }
-  }
-  
-  /* Styles pour les messages d'alerte */
-  .alert {
+}
+
+/* Styles pour les messages d'alerte */
+.alert {
     margin-top: 15px;
     padding: 10px;
     border-radius: 4px;
     color: white;
-  }
-  
-  /* Alertes spécifiques */
-  .alert-error {
+}
+
+/* Alertes spécifiques */
+.alert-error {
     background-color: #dc3545; /* Rouge */
-  }
-  
-  .alert-success {
+}
+
+.alert-success {
     background-color: #28a745; /* Vert */
-  }
+}

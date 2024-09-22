@@ -1,13 +1,13 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <label for="email">Email :</label>
     <input id="email" formControlName="email" />
-    <label for="password">Mot de passe :</label>
+    <label for="password">{{ "login.password" | translate }} :</label>
     <input id="password" type="password" formControlName="password" />
 
     <p *ngIf="myForm.invalid && (myForm.touched || myForm.dirty)" class="register_error">
     {{ getErrorLabel }}
     </p>
-    <button type="submit">Se connecter</button>
+    <button type="submit">{{ "login.logIn" | translate }}</button>
 </form>
 <app-error
   *ngIf="error"

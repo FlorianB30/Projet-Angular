@@ -1,25 +1,16 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <label for="name">Nom :</label>
+    <label for="name">{{ "register.name" | translate }} :</label>
     <input id="name" formControlName="name" />
-    <div *ngIf="myForm.get('name')?.invalid && myForm.get('name')?.touched">
-      Nom est requis et doit avoir au moins 3 caractères.
-    </div>
     <label for="email">Email :</label>
     <input id="email" formControlName="email" />
-    <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
-      
-    </div>
-    <label for="password">Mot de passe :</label>
+    <label for="password">{{ "register.password" | translate }} :</label>
     <input id="password" type="password" formControlName="password" />
-    <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
-      Le mot de passe doit avoir au moins 8 caractères.
-    </div>
-    <label for="confirmPassword">Confirmer le mot de passe :</label>
+    <label for="confirmPassword">{{ "register.confirm" | translate }} :</label>
     <input id="confirmPassword" type="password" formControlName="confirmPassword" />
     <p *ngIf="myForm.invalid && (myForm.touched || myForm.dirty)" class="register_error">
       {{ getErrorLabel }}
     </p>
-    <button type="submit">Soumettre</button>
+    <button type="submit">{{ "register.register" | translate }}</button>
 </form>
 <app-error
   *ngIf="error"

@@ -1,7 +1,18 @@
 {
-    "title": "Angular Quizz",
     "header":{
-        "logOut": "disconnect",
-        "logIn": "connect"
+        "logOut": "Disconnect",
+        "logIn": "Connect",
+        "register": "Register",
+        "welcome": "Welcome"
+    },
+    "login":{
+        "password": "Password",
+        "logIn": "Log in"
+    },
+    "register":{
+        "name": "Name",
+        "password": "Password",
+        "confirm": "Confirm password",
+        "register": "Register"
     }
 }
