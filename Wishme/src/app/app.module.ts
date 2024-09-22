@@ -12,6 +12,7 @@ import { FooterComponent } from './interface/footer/footer.component';
 import { HomeComponent } from './interface/home/home.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AboutComponent } from './interface/about/about.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -24,7 +25,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ErrorComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

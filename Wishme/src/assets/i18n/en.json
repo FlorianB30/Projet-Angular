@@ -3,7 +3,8 @@
         "logOut": "Disconnect",
         "logIn": "Connect",
         "register": "Register",
-        "welcome": "Welcome"
+        "welcome": "Welcome",
+        "about": "About"
     },
     "login":{
         "password": "Password",

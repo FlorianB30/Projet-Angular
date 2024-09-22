@@ -3,7 +3,8 @@
         "logOut": "Se deconnecter",
         "logIn": "Se connecter",
         "register": "S'enregistrer",
-        "welcome": "Bienvenu"
+        "welcome": "Bienvenu",
+        "about": "À propos"
     },
     "login":{
         "password": "Mot de passe",

@@ -7,7 +7,7 @@
     <nav>
       <ul>
         <li><a routerLink="/">Home</a></li>
-        <li><a href="#about">À propos</a></li>
+        <li><a href="/about">{{ "header.about" | translate }}</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
         <li *ngIf="!name"><a routerLink="/register">{{ "header.register" | translate }}</a></li>

@@ -62,6 +62,21 @@ app.post('/login', (req, res) => {
     });
 });
 
+const authenticateToken = (req, res, next) => {
+    const token = req.headers['authorization'] && req.headers['authorization'].split(' ')[1];
+    if (!token) return res.sendStatus(401);
+
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+};
+
+app.get('/verify', authenticateToken, (req, res) => {
+    res.json({ valid: true, user: req.user });
+});
+
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur le port ${PORT}`);
 });

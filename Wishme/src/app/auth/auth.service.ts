@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { throwError, Observable, of, BehaviorSubject } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../shared/interfaces'
 import { jwtDecode } from 'jwt-decode';
 import { StorageService } from '../shared/services/storage.service';
@@ -60,6 +60,27 @@ export class AuthService {
     );
   }
 
+  verifyToken(): Observable<boolean> {
+    const token = this.storageService.getItem(this.tokenKey);
+    return this.http.get(`${this.authUrl}/verify`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }).pipe(
+        tap(response => {
+            console.log('Token validé', response);
+            if (typeof token === 'string') {
+                this.saveToken(token);
+            }
+        }),
+        map(() => true),
+        catchError((error) => {
+            this.disconnect();
+            console.error('Erreur lors de la vérification du token', error);
+            return of(false);
+        })
+    );
+}
   private saveToken(token: string): void {
     this.storageService.setItem(this.tokenKey, token)
     this.userTokenSource.next(token);
