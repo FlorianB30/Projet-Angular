@@ -1,0 +1,19 @@
+{
+    "header":{
+        "logOut": "Disconnect",
+        "logIn": "Connect",
+        "register": "Register",
+        "welcome": "Welcome",
+        "about": "About"
+    },
+    "login":{
+        "password": "Password",
+        "logIn": "Log in"
+    },
+    "register":{
+        "name": "Name",
+        "password": "Password",
+        "confirm": "Confirm password",
+        "register": "Register"
+    }
+}

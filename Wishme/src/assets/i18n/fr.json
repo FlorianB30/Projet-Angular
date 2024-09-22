@@ -1,0 +1,19 @@
+{
+    "header":{
+        "logOut": "Se deconnecter",
+        "logIn": "Se connecter",
+        "register": "S'enregistrer",
+        "welcome": "Bienvenu",
+        "about": "À propos"
+    },
+    "login":{
+        "password": "Mot de passe",
+        "logIn": "Se connecter"
+    },
+    "register":{
+        "name": "Nom",
+        "password": "Mot de passe",
+        "confirm": "Confirmation du mot de passe",
+        "register": "S'enregistrer"
+    }
+}

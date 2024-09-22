@@ -1,0 +1,20 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <label for="name">{{ "register.name" | translate }} :</label>
+    <input id="name" formControlName="name" />
+    <label for="email">Email :</label>
+    <input id="email" formControlName="email" />
+    <label for="password">{{ "register.password" | translate }} :</label>
+    <input id="password" type="password" formControlName="password" />
+    <label for="confirmPassword">{{ "register.confirm" | translate }} :</label>
+    <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+    <p *ngIf="myForm.invalid && (myForm.touched || myForm.dirty)" class="register_error">
+      {{ getErrorLabel }}
+    </p>
+    <button type="submit">{{ "register.register" | translate }}</button>
+</form>
+<app-error
+  *ngIf="error"
+  [message]="message" 
+  [code]="code"
+  (closePopup)="error = false">
+</app-error>

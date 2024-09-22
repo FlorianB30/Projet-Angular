@@ -1,0 +1,11 @@
+<div class="overlay" *ngIf="message" (click)="onOverlayClick()">
+    <div class="error-display" (click)="$event.stopPropagation()">
+      <button class="close-button" (click)="onCloseClick()">X</button>
+      <div *ngIf="printcode" class="error-header">
+        <h2 class="error-code">Erreur {{ code }}</h2>
+      </div>
+      <div class="error-message">
+        <p>{{ message }}</p>
+      </div>
+    </div>
+  </div>

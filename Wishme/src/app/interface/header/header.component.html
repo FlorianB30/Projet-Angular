@@ -1,0 +1,35 @@
+<header>
+    <div class="logo">WishME
+     
+    </div>
+
+    <span *ngIf="name">{{ "header.welcome" | translate }} {{name}}</span>
+    <nav>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a href="/about">{{ "header.about" | translate }}</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li *ngIf="!name"><a routerLink="/register">{{ "header.register" | translate }}</a></li>
+      </ul>
+    </nav>
+  
+    <div class="header-right">
+      <button *ngIf="name" class="disconnect-button" (click)="this.disconnect()">
+        {{ "header.logOut" | translate }}
+      </button>
+      <button *ngIf="!name" class="connect-button" (click)="this.connect()">
+        {{ "header.logIn" | translate }}
+      </button>
+  
+      <div class="lang-selector">
+        <label for="lang">Language</label>
+        <select id="lang" [(ngModel)]="selectedLangage" (change)="changeLangage()">
+          <option *ngFor="let langage of langages" [value]="langage">
+            {{ langage }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </header>
+  
