@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
@@ -13,10 +14,13 @@ import { HomeComponent } from './interface/home/home.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AboutComponent } from './interface/about/about.component';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+import { ItemComponent } from './catalogue/item/item.component';
+import { AddItemComponent } from './catalogue/add-item/add-item.component';
+import { EditItemComponent } from './catalogue/edit-item/edit-item.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +30,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    CatalogueComponent,
+    ItemComponent,
+    AddItemComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    CommonModule,
+    ReactiveFormsModule
     FormsModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({

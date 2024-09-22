@@ -1,0 +1,23 @@
+<h2>Catalogue de Cadeaux</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prix</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of catalogue">
+      <td>{{ item.name }}</td>
+      <td>{{ item.price }}</td>
+      <td>
+        <button (click)="viewDescription(item.id)">Voir la description</button>
+        <button (click)="editItem(item.id)">Modifier</button>
+        <button (click)="deleteItem(item.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-add-item *ngIf="!isEditing"></app-add-item>
+<app-edit-item *ngIf="isEditing"></app-edit-item>

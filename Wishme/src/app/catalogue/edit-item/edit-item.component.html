@@ -1,0 +1,18 @@
+<section>
+    <h2>Modifier le cadeau dans le catalogue</h2>
+    <form [formGroup]="editItemForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" formControlName="name" type="text" value="{{item.name}}">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" formControlName="description">{{ item.description }}</textarea>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input id="price" formControlName="price" type="number" value="{{ item.price}}">
+        </div>
+        <button type="submit">Modifier le cadeau</button>
+    </form>
+</section>
