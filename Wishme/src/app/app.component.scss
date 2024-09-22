@@ -1,0 +1,16 @@
+/* styles.scss ou app.component.scss */
+
+html, body {
+    height: 100%; /* Assure que le body prend toute la hauteur */
+    margin: 0; /* Supprime les marges par défaut */
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column; /* Colonne pour le layout */
+    min-height: 100vh; /* Minimum 100% de la hauteur de la fenêtre */
+  }
+  
+  router-outlet {
+    flex: 1; /* Prend l'espace disponible */
+  }

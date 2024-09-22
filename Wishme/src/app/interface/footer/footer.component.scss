@@ -1,0 +1,53 @@
+/* footer.component.scss */
+
+footer {
+    background-color: #343a40; /* Couleur de fond sombre */
+    color: white; /* Couleur du texte */
+    padding: 20px 0; /* Espacement vertical */
+    text-align: center; /* Centre le texte */
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: center; /* Centre verticalement les éléments */
+    max-width: 1200px; /* Largeur maximale du footer */
+    margin: 0 auto; /* Centre le footer */
+    padding: 0 20px; /* Espacement latéral */
+  }
+  
+  .footer-logo {
+    font-size: 24px; /* Taille du logo */
+    font-weight: bold; /* Met en gras */
+  }
+  
+  .footer-nav {
+    flex: 1; /* Occupe l'espace restant */
+  }
+  
+  .footer-nav ul {
+    display: flex;
+    justify-content: center; /* Centre les éléments de la liste */
+    list-style: none; /* Supprime les puces */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-nav ul li {
+    margin: 0 15px; /* Espace entre les éléments de la liste */
+  }
+  
+  .footer-nav ul li a {
+    color: white; /* Couleur des liens */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: color 0.3s; /* Transition pour le survol */
+  }
+  
+  .footer-nav ul li a:hover {
+    color: #d9534f; /* Couleur au survol */
+  }
+  
+  .footer-right {
+    color: #aaa; /* Couleur du texte droit */
+  }
+  

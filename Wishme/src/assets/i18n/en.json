@@ -1,0 +1,7 @@
+{
+    "title": "Angular Quizz",
+    "header":{
+        "logOut": "disconnect",
+        "logIn": "connect"
+    }
+}

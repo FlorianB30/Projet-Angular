@@ -3,5 +3,15 @@
     <input id="email" formControlName="email" />
     <label for="password">Mot de passe :</label>
     <input id="password" type="password" formControlName="password" />
+
+    <p *ngIf="myForm.invalid && (myForm.touched || myForm.dirty)" class="register_error">
+    {{ getErrorLabel }}
+    </p>
     <button type="submit">Se connecter</button>
 </form>
+<app-error
+  *ngIf="error"
+  [message]="message" 
+  [code]="code"
+  (closePopup)="error = false">
+</app-error>

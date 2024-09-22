@@ -1,0 +1,62 @@
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+    
+    .error-display {
+        position: relative;
+        padding: 30px; /* Augmente le padding */
+        width: 500px; /* Largeur de la popup */
+        border: 4px solid #721c24; /* Bordure rouge plus épaisse */
+        background-color: #ffffff; /* Fond blanc */
+        color: #721c24; /* Texte rouge foncé */
+        border-radius: 15px; /* Arrondir les bords */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent; /* Fond transparent */
+        border: none; /* Pas de bordure */
+        font-size: 20px; /* Taille de la croix */
+        color: #721c24; /* Couleur de la croix */
+        cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+    
+        &:hover {
+        color: #dc3545; /* Couleur au survol */
+        }
+    }
+    
+    .error-header {
+        font-weight: bold;
+        font-size: 1.2em;
+        text-align: center; /* Centre le titre */
+    }
+    
+    .error-code {
+        border: 2px solid #0a0a0a; /* Bordure rouge plus épaisse */
+        padding: 5px 10px; /* Padding autour du code */
+        border-radius: 10px; /* Arrondir les bords */
+        display: inline-block; /* Permet d'appliquer le padding correctement */
+        margin: 0 auto 15px auto; /* Centre le code d'erreur */
+        text-align: center; /* Centre le texte dans le bloc */
+    }
+    
+    .error-message {
+        margin-top: 10px;
+        font-size: 1.2em; /* Augmente la taille du texte */
+        line-height: 1.5; /* Ajoute de l'espacement entre les lignes */
+        font-weight: bold; /* Texte en gras */
+        text-align: center; /* Centre le message */
+    }
+    
