@@ -4,7 +4,8 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-const { register, login, authenticateToken, verify, updateUser, deleteUser } = require('./auth/modele');
+const { register, login, authenticateToken, verify } = require('./auth/modele');
+const { updateUser, deleteUser, getUsers, getUserById, getUserByEmail } = require('./users/modele');
 const { createItem, getItems, getItemById, updateItem, deleteItem } = require('./catalogue/modele');
 
 app.use(cors());
@@ -13,8 +14,14 @@ app.use(bodyParser.json());
 app.post('/auth/register', register);
 app.post('/auth/login', login);
 app.get('/auth/verify', authenticateToken, verify);
-app.put('/auth/users/:id', updateUser);
-app.delete('/auth/users/:id', deleteUser);
+
+
+app.get('/users', getUsers);
+app.get('/users/:id', getUserById);
+app.get('/users/email/:email', getUserByEmail);
+app.put('/users/:id', authenticateToken, updateUser);
+app.delete('/users/:id', authenticateToken, deleteUser);
+
 
 app.get('/catalogue', getItems);
 app.get('/catalogue/:id', getItemById);

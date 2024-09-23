@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../../shared/services/item.service';
-import { Item } from '../../shared/models/item.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Item } from '../../shared/interfaces';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-item',
@@ -11,21 +11,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EditItemComponent implements OnInit {
   @Input() item!: Item;
-  @Output() itemUpdated = new EventEmitter<any>();
+  @Output() itemUpdated = new EventEmitter<boolean>();
 
-  
-  // item!: Item;
   editItemForm!: FormGroup
+  selectedItem: Item | null = null
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
     private itemService: ItemService
   ) { 
     this.editItemForm = this.fb.group({
       name: [''],
       description: [''],
-      price: ['']
+      price: ['', [Validators.required, Validators.min(0)]]
     });
   }
 
@@ -37,21 +36,37 @@ export class EditItemComponent implements OnInit {
           description: selectedItem.description,
           price: selectedItem.price,
         });
+        if(selectedItem){
+          this.selectedItem = selectedItem
+        }
       }
-
     });
-    const id = this.route.snapshot.paramMap.get('id');
   }
 
   onSubmit() {
-    if (this.item) {
-      this.itemService.updateItem(this.item).subscribe(
+    if (this.editItemForm.valid && this.selectedItem) {
+      const formValues = this.editItemForm.value;
+      let updatedItem = this.selectedItem;
+      if(formValues.name && formValues.name != "" ){
+        updatedItem.name = formValues.name
+      }
+      if(formValues.description && formValues.description != "" ){
+        updatedItem.description = formValues.description
+      }
+      if(formValues.price && formValues.price != "" ){
+        updatedItem.price = formValues.price
+      }
+      this.itemService.updateItem(updatedItem).subscribe(
         () => {
-          console.log('Item mis à jour avec succès');
-          this.router.navigate(['/catalogue']);
+          this.itemService.getItems()
         },
-        error => console.error('Erreur lors de la mise à jour de l\'item', error)
+        error => console.error('Erreur lors de l\'ajout de l\'item', error)
       );
     }
+    this.itemUpdated.emit(true);
+  }
+
+  get priceControl() {
+    return this.editItemForm.get('price');
   }
 }

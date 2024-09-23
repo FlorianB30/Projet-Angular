@@ -1,18 +1,23 @@
 <section>
     <h2>Modifier le cadeau dans le catalogue</h2>
     <form [formGroup]="editItemForm" (ngSubmit)="onSubmit()">
-        <div>
-            <label for="name">Name:</label>
-            <input id="name" formControlName="name" type="text">
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" type="text">
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description"></textarea>
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input id="price" formControlName="price" type="number">
+        <div *ngIf="priceControl?.invalid && priceControl?.touched">
+          <small *ngIf="priceControl?.errors?.['required']">Le prix est requis.</small>
+          <small *ngIf="priceControl?.errors?.['min']">Le prix doit être supérieur ou égal à 0.</small>
         </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" formControlName="description"></textarea>
-        </div>
-        <div>
-            <label for="price">Price:</label>
-            <input id="price" formControlName="price" type="number">
-        </div>
-        <button type="submit">Modifier le cadeau</button>
+      </div>
+      <button type="submit" [disabled]="editItemForm.invalid">Modifier le cadeau</button>
     </form>
-</section>
+  </section>
+  

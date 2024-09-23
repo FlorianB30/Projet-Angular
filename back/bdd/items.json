@@ -6,12 +6,6 @@
     "price": 10.99
   },
   {
-    "id": "2",
-    "name": "Product 2",
-    "description": "Description for Product 2",
-    "price": 15.99
-  },
-  {
     "id": "3",
     "name": "Product 3",
     "description": "Description for Product 3",
@@ -50,7 +44,25 @@
   {
     "id": "9",
     "name": "test",
-    "description": "test desce",
-    "price": 12
+    "description": "test",
+    "price": 1111
+  },
+  {
+    "id": "10",
+    "name": "test3",
+    "description": "test3",
+    "price": 333
+  },
+  {
+    "id": "11",
+    "name": "to",
+    "description": "rzqr",
+    "price": "123.13"
+  },
+  {
+    "id": "d411e0c6-b60f-4421-98b2-83fb61d4e354",
+    "name": "tutu",
+    "description": "tytyt",
+    "price": 10.2
   }
 ]

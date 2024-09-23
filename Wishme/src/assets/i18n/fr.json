@@ -4,7 +4,11 @@
         "logIn": "Se connecter",
         "register": "S'enregistrer",
         "welcome": "Bienvenu",
-        "about": "À propos"
+        "about": "À propos",
+        "catalog": "Catalogue",
+        "home": "Accueil",
+        "contact": "Nous contacter",
+        "account": "Mon compte"
     },
     "login":{
         "password": "Mot de passe",

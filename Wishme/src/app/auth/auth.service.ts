@@ -80,7 +80,7 @@ export class AuthService {
             return of(false);
         })
     );
-}
+  }
   private saveToken(token: string): void {
     this.storageService.setItem(this.tokenKey, token)
     this.userTokenSource.next(token);

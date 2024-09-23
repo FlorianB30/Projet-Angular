@@ -12,12 +12,12 @@
       <td>{{ item.name }}</td>
       <td>{{ item.price }}</td>
       <td>
-        <button (click)="viewDescription(item.id)">Voir la description</button>
+        <button *ngIf="item.id" (click)="viewDescription(item.id)">Voir la description</button>
         <button (click)="editItem(item)">Modifier</button>
-        <button (click)="deleteItem(item.id)">Supprimer</button>
+        <button *ngIf="item.id" (click)="deleteItem(item.id)">Supprimer</button>
       </td>
     </tr>
   </tbody>
 </table>
 <app-add-item *ngIf="!isEditing"></app-add-item>
-<app-edit-item *ngIf="isEditing"></app-edit-item>
+<app-edit-item *ngIf="isEditing" (itemUpdated)="isEditing=false" ></app-edit-item>

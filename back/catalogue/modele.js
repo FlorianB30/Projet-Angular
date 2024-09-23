@@ -27,8 +27,9 @@ const writeItemsToFile = (items, callback) => {
 };
 
 const createItem = (req, res) => {
-    const newItem = { id: uuidv4(), ...req.body };
-
+    let newItem = req.body ;
+    newItem.id = uuidv4()
+    newItem.price = newItem.price.toFixed(2)
     if (!newItem.name || !newItem.description || newItem.price === undefined) {
         return res.status(400).json({ message: 'Veuillez fournir un nom, une description et un prix.' });
     }
@@ -78,6 +79,7 @@ const getItemById = (req, res) => {
 const updateItem = (req, res) => {
     const { id } = req.params;
     const updatedItem = req.body;
+    updatedItem.price = updatedItem.price.toFixed(2)
 
     readItemsFromFile((err, items) => {
         if (err) {

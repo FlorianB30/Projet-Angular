@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../shared/services/item.service';
-import { Item } from '../shared/models/item.model';
+import { Item, Items } from '../shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements OnInit {
-  catalogue: Item[] = [];
+  catalogue: Items = [];
   isEditing = false;
 
   constructor(
@@ -23,14 +23,14 @@ export class CatalogueComponent implements OnInit {
   }
 
   loadCatalogue(): void {
-    this.itemService.getItems().subscribe(
-      (catalogue) => this.catalogue = catalogue,
-      (error) => console.error('Erreur lors du chargement des items', error)
-    );
+    this.itemService.getItems()
+    this.itemService.items$.subscribe(items => {
+      this.catalogue = items
+    });
   }
   addItem(): void {
     this.isEditing = false;
-    this.router.navigate(['addItem'], { relativeTo: this.route });
+    // this.router.navigate(['addItem'], { relativeTo: this.route });
   }
   viewDescription(itemId: string): void {
     this.router.navigate(['/catalogue', itemId], { relativeTo: this.route });
