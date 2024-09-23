@@ -70,4 +70,55 @@ const verify = (req, res) => {
     res.json({ valid: true, user: req.user });
 };
 
-module.exports = { register, login, authenticateToken, verify };
+const updateUser = (req, res) => {
+    const { id } = req.params;
+    const updatedUser = req.body;
+
+    fs.readFile('bdd/users.json', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Erreur de lecture du fichier' });
+        }
+
+        let users = JSON.parse(data);
+        const userIndex = users.findIndex(user => user.id === id);
+
+        if (userIndex === -1) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé.' });
+        }
+
+        users[userIndex] = { ...users[userIndex], ...updatedUser };
+
+        fs.writeFile('bdd/users.json', JSON.stringify(users, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Erreur de mise à jour de l\'utilisateur.' });
+            }
+            res.json({ message: 'Utilisateur modifié avec succès', user: users[userIndex] });
+        });
+    });
+};
+
+const deleteUser = (req, res) => {
+    const { id } = req.params;
+
+    fs.readFile('bdd/users.json', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Erreur de lecture du fichier' });
+        }
+
+        let users = JSON.parse(data);
+        const newUsers = users.filter(user => user.id !== id);
+
+        if (users.length === newUsers.length) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé.' });
+        }
+
+        fs.writeFile('bdd/users.json', JSON.stringify(newUsers, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Erreur de suppression de l\'utilisateur.' });
+            }
+            res.json({ message: 'Utilisateur supprimé avec succès' });
+        });
+    });
+};
+
+module.exports = { register, login, authenticateToken, verify, updateUser, deleteUser };
