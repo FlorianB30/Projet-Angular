@@ -51,26 +51,34 @@ export class UserService {
     );
   }
 
-  
-  // getUserById(): Observable<User> {
-  //   const token = this.authService.getToken();
-  //   return this.http.get(`${this.authUrl}/verify`, {
-  //       headers: {
-  //           Authorization: `Bearer ${token}`
-  //       }
-  //   }).pipe(
-  //       tap(response => {
-  //           console.log('Token validé', response);
-  //           if (typeof token === 'string') {
-  //               this.saveToken(token);
-  //           }
-  //       }),
-  //       map(() => true),
-  //       catchError((error) => {
-  //           this.disconnect();
-  //           console.error('Erreur lors de la vérification du token', error);
-  //           return of(false);
-  //       })
-  //   );
-  // }
+  updateUser(user: User): Observable<number> {
+    return this.http.put(`${this.usersUrl}/${user.id}`, user, { observe: 'response' }).pipe(
+      map(response => {
+        return response.status;
+      }),
+      catchError((error) => {
+        console.error('Erreur lors de l\'enregistrement', error);
+        return of(error.status);
+      })
+    );
+  }
+
+  deleteUser(id: string): Observable<number> {
+    const token = this.authService.getToken();
+    return this.http.delete(`${this.usersUrl}/${id}`, {
+      headers: {
+          Authorization: `Bearer ${token}`
+      },
+      observe: 'response'
+  }).pipe(
+      map(response => {
+        return response.status;
+      }),
+      catchError((error) => {
+        console.error('Erreur lors de l\'enregistrement', error);
+        return of(error.status);
+      })
+    );
+  }
+
 }

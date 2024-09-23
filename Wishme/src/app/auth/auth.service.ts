@@ -22,6 +22,9 @@ export class AuthService {
   private userTokenSource = new BehaviorSubject<string | null>(null);
   userToken$ = this.userTokenSource.asObservable();
 
+  private tokenIsVerifiedSource = new BehaviorSubject<boolean>(false);
+  tokenIsVerified$ = this.tokenIsVerifiedSource.asObservable();
+
   constructor(
     private http: HttpClient,
     private storageService: StorageService
@@ -29,6 +32,7 @@ export class AuthService {
     this.userNameSource.next(this.storageService.getItem("WishMeName"));
     this.userEmailSource.next(this.storageService.getItem("WishMeEmail"));
     this.userTokenSource.next(this.storageService.getItem("wishMeToken"));
+    this.tokenIsVerifiedSource.next(false);
   }
 
   register(user: User): Observable<number> {
@@ -60,27 +64,50 @@ export class AuthService {
     );
   }
 
-  verifyToken(): Observable<boolean> {
-    const token = this.storageService.getItem(this.tokenKey);
+  OverifyToken(): Observable<boolean> {
+    const token = this.getToken();
     return this.http.get(`${this.authUrl}/verify`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     }).pipe(
         tap(response => {
-            console.log('Token validé', response);
+            console.log(response)
             if (typeof token === 'string') {
+              this.tokenIsVerifiedSource.next(true);
                 this.saveToken(token);
             }
         }),
         map(() => true),
         catchError((error) => {
+          this.tokenIsVerifiedSource.next(false);
             this.disconnect();
             console.error('Erreur lors de la vérification du token', error);
             return of(false);
         })
     );
   }
+
+  verifyToken(): void {
+    const token = this.getToken();
+    console.log(token)
+    const response = this.http.get(`${this.authUrl}/verify`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    response.subscribe(
+      (res) => {
+        console.log(`response: ${res}`)
+        this.tokenIsVerifiedSource.next(true);
+      },
+      error =>{
+        console.error('Erreur lors de la recuperation des items', error)
+        this.tokenIsVerifiedSource.next(false);
+      }
+    );
+  }
+
   private saveToken(token: string): void {
     this.storageService.setItem(this.tokenKey, token)
     this.userTokenSource.next(token);
@@ -113,6 +140,7 @@ export class AuthService {
     return !!this.getToken();
   }
   disconnect(): void {
+    this.tokenIsVerifiedSource.next(false);
     this.storageService.removeItem(this.tokenKey)
     this.userTokenSource.next(null);
     this.storageService.removeItem("WishMeEmail")
