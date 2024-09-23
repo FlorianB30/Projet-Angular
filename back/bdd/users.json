@@ -63,5 +63,11 @@
     "name": "newUser",
     "email": "newUser@ud.com",
     "password": "Azerty@123"
+  },
+  {
+    "id": "53c4e996-548a-49df-aade-f647940f914f",
+    "name": "toto",
+    "email": "toto@toto.com",
+    "password": "Azerty@123"
   }
 ]

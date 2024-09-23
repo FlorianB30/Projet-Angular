@@ -11,7 +11,7 @@ import { StorageService } from '../shared/services/storage.service';
 
 })
 export class AuthService {
-  private authUrl = 'http://localhost:3005/auth'
+  private authUrl = 'http://localhost:3000/auth'
   private tokenKey = 'wishMeToken';
   private userNameSource = new BehaviorSubject<string | null>(null);
   userName$ = this.userNameSource.asObservable();

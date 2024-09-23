@@ -2,6 +2,8 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid'); 
 const SECRET_KEY = "MySecretKeyFromEnv";
+const usersFilePath = 'bdd/users.json';
+
 
 const register = (req, res) => {
     const newUser = req.body;
@@ -9,7 +11,7 @@ const register = (req, res) => {
         return res.status(400).json({ message: 'Veuillez fournir un nom d\'utilisateur, un email et un mot de passe.' });
     }
 
-    fs.readFile('bdd/users.json', (err, data) => {
+    fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
         }
@@ -25,7 +27,7 @@ const register = (req, res) => {
 
         users.push(userWithId);
 
-        fs.writeFile('bdd/users.json', JSON.stringify(users, null, 2), (err) => {
+        fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
             if (err) {
                 return res.status(500).json({ message: 'Erreur d\'écriture dans le fichier' });
             }
@@ -37,7 +39,7 @@ const register = (req, res) => {
 const login = (req, res) => {
     const { email, password } = req.body;
 
-    fs.readFile('bdd/users.json', (err, data) => {
+    fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
         }
@@ -78,7 +80,7 @@ const updateUser = (req, res) => {
         return res.status(403).json({ message: 'Vous ne pouvez mettre à jour que vos propres informations.' });
     }
 
-    fs.readFile('bdd/users.json', (err, data) => {
+    fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
         }
@@ -92,7 +94,7 @@ const updateUser = (req, res) => {
 
         users[userIndex] = { ...users[userIndex], ...updatedUser };
 
-        fs.writeFile('bdd/users.json', JSON.stringify(users, null, 2), (err) => {
+        fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
             if (err) {
                 return res.status(500).json({ message: 'Erreur de mise à jour de l\'utilisateur.' });
             }
@@ -104,7 +106,7 @@ const updateUser = (req, res) => {
 const deleteUser = (req, res) => {
     const { id } = req.params;
 
-    fs.readFile('bdd/users.json', (err, data) => {
+    fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
         }
@@ -121,7 +123,7 @@ const deleteUser = (req, res) => {
         }
         const newUsers = users.filter(user => user.id !== id);
 
-        fs.writeFile('bdd/users.json', JSON.stringify(newUsers, null, 2), (err) => {
+        fs.writeFile(usersFilePath, JSON.stringify(newUsers, null, 2), (err) => {
             if (err) {
                 return res.status(500).json({ message: 'Erreur de suppression de l\'utilisateur.' });
             }
