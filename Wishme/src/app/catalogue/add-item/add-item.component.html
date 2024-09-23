@@ -1,21 +1,31 @@
 <section class="overlay">
   <div class="modal-content">
     <button class="close-button" (click)="close()">✖</button>
-    <h2>Ajouter un nouveau cadeau dans le catalogue</h2>
+    <h2>{{ "addItem.title" | translate }}</h2>
     <form [formGroup]="addItem" (ngSubmit)="onSubmit()">
       <div>
-        <label for="name">Nom:</label>
+        <label for="name">{{ "addItem.name" | translate }}:</label>
         <input type="text" id="name" formControlName="name" name="name" required>
+        <div *ngIf="nameControl?.invalid && nameControl?.touched">
+          <small *ngIf="nameControl?.errors?.['required']">{{ "addItem.nameRequired" | translate }}.</small>
+        </div>
       </div>
       <div>
-        <label for="description">Description:</label>
+        <label for="description">{{ "addItem.description" | translate }}:</label>
         <textarea id="description" formControlName="description" name="description" required></textarea>
+        <div *ngIf="descriptionControl?.invalid && descriptionControl?.touched">
+          <small *ngIf="descriptionControl?.errors?.['required']">{{ "addItem.descriptionRequired" | translate }}.</small>
+        </div>
       </div>
       <div>
-        <label for="price">Prix:</label>
+        <label for="price">{{ "addItem.price" | translate }}:</label>
         <input type="number" id="price" formControlName="price" name="price" required>
+        <div *ngIf="priceControl?.invalid && priceControl?.touched">
+          <small *ngIf="priceControl?.errors?.['required']">{{ "addItem.priceRequired" | translate }}.</small>
+          <small *ngIf="priceControl?.errors?.['min']">{{ "addItem.priceInvalidValue" | translate }}.</small>
+        </div>
       </div>
-      <button type="submit">Ajouter</button>
+      <button type="submit">{{ "addItem.add" | translate }}</button>
     </form>
   </div>
 </section>

@@ -1,13 +1,13 @@
-<h2>Catalogue de Cadeaux</h2>
-<button class="button-add" (click)="isAddding=true;">Ajouter</button>
+<h2>{{ "catalogue.title" | translate }}</h2>
+<button class="button-add" (click)="isAddding=true;">{{ "catalogue.add" | translate }}</button>
 
 <div class="table-container">
   <table>
     <thead>
       <tr>
-        <th>Nom</th>
-        <th>Prix</th>
-        <th>Actions</th>
+        <th>{{ "catalogue.name" | translate }}</th>
+        <th>{{ "catalogue.price" | translate }}</th>
+        <th>{{ "catalogue.action" | translate }}</th>
       </tr>
     </thead>
     <tbody>
@@ -15,9 +15,9 @@
         <td>{{ item.name }}</td>
         <td>{{ item.price }}</td>
         <td>
-          <button *ngIf="item.id" (click)="viewDescription(item.id)">Voir la description</button>
-          <button (click)="editItem(item)">Modifier</button>
-          <button *ngIf="item.id" (click)="deleteItem(item.id)">Supprimer</button>
+          <button *ngIf="item.id" (click)="viewDescription(item.id)">{{ "catalogue.description" | translate }}</button>
+          <button (click)="editItem(item)">{{ "catalogue.modify" | translate }}</button>
+          <button *ngIf="item.id" (click)="deleteItem(item.id)">{{ "catalogue.delete" | translate }}</button>
         </td>
       </tr>
     </tbody>
@@ -25,9 +25,9 @@
 </div>
 
 <div class="pagination">
-  <button (click)="previousPage()" [disabled]="currentPage === 1">Précédent</button>
-  <span>Page {{ currentPage }} sur {{ totalPages() }}</span>
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages()">Suivant</button>
+  <button (click)="previousPage()" [disabled]="currentPage === 1">{{ "catalogue.previous" | translate }}</button>
+  <span>{{ "catalogue.page" | translate }} {{ currentPage }} {{ "catalogue.on" | translate }} {{ totalPages() }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages()">{{ "catalogue.next" | translate }}</button>
 </div>
 
 <app-add-item *ngIf="isAddding" (itemAdded)="isAddding=false"></app-add-item>

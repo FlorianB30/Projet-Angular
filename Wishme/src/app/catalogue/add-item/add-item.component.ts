@@ -52,7 +52,15 @@ export class AddItemComponent {
     }
     this.itemAdded.emit(true);
   }
-
+  get priceControl() {
+    return this.addItem.get('price');
+  }
+  get nameControl() {
+    return this.addItem.get('name');
+  }
+  get descriptionControl() {
+    return this.addItem.get('description');
+  }
   close(){
     this.itemAdded.emit(false);
   }

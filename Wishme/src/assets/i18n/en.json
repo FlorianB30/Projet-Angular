@@ -19,5 +19,44 @@
         "password": "Password",
         "confirm": "Confirm password",
         "register": "Register"
+    },
+    "catalogue":{
+        "title": "Gift Catalog",
+        "add": "Add",
+        "name": "Name",
+        "price": "Price",
+        "action": "Actions",
+        "description": "View description",
+        "modify": "Modify",
+        "delete": "Delete",
+        "page": "Page",
+        "on": "on",
+        "previous": "Previous",
+        "next": "Next"
+    },
+    "catalogueItem":{
+        "id": "Product number",
+        "description": "Description",
+        "price": "Price",
+        "backToListe": "Back to list"
+    },
+    "editItem":{
+        "title": "Modify gift in catalog",
+        "name": "Name",
+        "description": "Description",
+        "price": "Price",
+        "priceInvalidValue": "The price must be greater than or equal to 0",
+        "modify": "Modify gift"
+    },
+    "addItem":{
+        "title": "Add a new gift to the catalog",
+        "name": "Name",
+        "description": "Description",
+        "price": "Price",
+        "nameRequired": "Name is required",
+        "descriptionRequired": "Description is required",
+        "priceRequired": "Price is required",
+        "priceInvalidValue": "The price must be greater than or equal to 0",
+        "add": "Add gift"
     }
 }

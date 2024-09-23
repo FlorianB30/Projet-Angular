@@ -1,25 +1,24 @@
 <section class="overlay">
   <div class="modal-content">
     <button class="close-button" (click)="close()">✖</button>
-    <h2>Modifier le cadeau dans le catalogue</h2>
+    <h2>{{ "editItem.title" | translate }}</h2>
     <form [formGroup]="editItemForm" (ngSubmit)="onSubmit()">
       <div>
-        <label for="name">Name:</label>
+        <label for="name">{{ "editItem.name" | translate }}:</label>
         <input id="name" formControlName="name" type="text">
       </div>
       <div>
-        <label for="description">Description:</label>
+        <label for="description">{{ "editItem.description" | translate }}:</label>
         <textarea id="description" formControlName="description"></textarea>
       </div>
       <div>
-        <label for="price">Price:</label>
+        <label for="price">{{ "editItem.price" | translate }}:</label>
         <input id="price" formControlName="price" type="number">
         <div *ngIf="priceControl?.invalid && priceControl?.touched">
-          <small *ngIf="priceControl?.errors?.['required']">Le prix est requis.</small>
-          <small *ngIf="priceControl?.errors?.['min']">Le prix doit être supérieur ou égal à 0.</small>
+          <small *ngIf="priceControl?.errors?.['min']">{{ "editItem.priceInvalidValue" | translate }}.</small>
         </div>
       </div>
-      <button type="submit" [disabled]="editItemForm.invalid">Modifier le cadeau</button>
+      <button type="submit" [disabled]="editItemForm.invalid">{{ "editItem.modify" | translate }}</button>
     </form>
   </div>
 </section>

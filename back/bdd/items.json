@@ -54,16 +54,10 @@
     "price": "1.00"
   },
   {
-    "id": "ecfea402-702d-4881-b5af-2c877ac3b2f2",
-    "name": "é\"'é\"'",
-    "description": "éréef",
-    "price": "1.00"
-  },
-  {
     "id": "af7d5e5d-8cd6-4d35-baba-be51c76ab12e",
-    "name": "azdzaeazeazea",
-    "description": "azezaezae",
-    "price": "1.00"
+    "name": "azdiizaea",
+    "description": "aaziiaezae",
+    "price": "1.05"
   },
   {
     "id": "25c5a5b3-b710-4761-a938-6a65453879dc",
@@ -255,6 +249,6 @@
     "id": "40",
     "name": "Product 40",
     "description": "Description for Product 40",
-    "price": 75
+    "price": "50.00"
   }
 ]

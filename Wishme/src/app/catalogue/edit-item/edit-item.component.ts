@@ -24,7 +24,7 @@ export class EditItemComponent implements OnInit {
     this.editItemForm = this.fb.group({
       name: [''],
       description: [''],
-      price: ['', [Validators.required, Validators.min(0)]]
+      price: ['', [Validators.min(0)]]
     });
   }
 
