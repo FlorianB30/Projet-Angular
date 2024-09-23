@@ -17,12 +17,15 @@ export class HeaderComponent {
 
   }
   langages = ["en","fr"]
-  selectedLangage = this.translateService.getBrowserLang()
+  selectedLangage: string | undefined
   name: string | null = null;
   ngOnInit(): void {
     this.authService.userName$.subscribe(name => {
       this.name = name;
     });
+    if(!this.selectedLangage){
+      this.selectedLangage = this.translateService.getBrowserLang()
+    }
   }
   disconnect(){
     this.authService.disconnect();

@@ -52,7 +52,7 @@ export class AuthService {
       map((response: any) => {
         if (response.body.token) {
           this.saveToken(response.body.token);
-
+          this.verifyToken();
         }
         return response.status;
       }),
@@ -61,30 +61,6 @@ export class AuthService {
         this.disconnect()
         return of(error.status);
       })
-    );
-  }
-
-  OverifyToken(): Observable<boolean> {
-    const token = this.getToken();
-    return this.http.get(`${this.authUrl}/verify`, {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }).pipe(
-        tap(response => {
-            console.log(response)
-            if (typeof token === 'string') {
-              this.tokenIsVerifiedSource.next(true);
-                this.saveToken(token);
-            }
-        }),
-        map(() => true),
-        catchError((error) => {
-          this.tokenIsVerifiedSource.next(false);
-            this.disconnect();
-            console.error('Erreur lors de la vérification du token', error);
-            return of(false);
-        })
     );
   }
 
@@ -100,6 +76,10 @@ export class AuthService {
       (res) => {
         console.log(`response: ${res}`)
         this.tokenIsVerifiedSource.next(true);
+        const token = this.getToken()
+        if (token){
+          this.saveToken(token);
+        }
       },
       error =>{
         console.error('Erreur lors de la recuperation des items', error)
@@ -120,6 +100,25 @@ export class AuthService {
 
   getToken(): string | null {
     return this.storageService.getItem(this.tokenKey);
+  }
+
+  getUserInfo(): User {
+    let currentUser: User = {
+      id: null,
+      name: "",
+      email: "",
+      password: null
+    }
+    const email =  this.storageService.getItem("WishMeEmail")
+    const name =  this.storageService.getItem("WishMeName")
+    if(name){
+      currentUser.name = name
+    }
+    if(email){
+      currentUser.email = email
+    }
+    return currentUser
+
   }
 
   getDecodedToken(): any {

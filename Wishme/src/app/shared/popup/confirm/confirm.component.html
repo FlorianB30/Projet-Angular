@@ -1,0 +1,16 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+      <header>
+        <h1 md-dialog-title>
+          <ng-content select="[popup-header]"></ng-content>
+        </h1>
+      </header>
+      <main>
+        <ng-content select="[popup-content]"></ng-content>
+        <div md-dialog-actions>
+          <button md-button (click)="this.valueSubmitted.emit(true);">Oui</button>
+          <button md-button (click)="this.valueSubmitted.emit(false);">Non</button>
+        </div>
+      </main>
+    </div>
+  </div>

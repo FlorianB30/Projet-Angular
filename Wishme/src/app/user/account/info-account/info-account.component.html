@@ -1,1 +1,11 @@
-<p>info-account works!</p>
+<div *ngIf="user" class="user-info">
+    <h2>{{ "infoAccount.title" | translate }}</h2>
+    <p><strong>{{ "infoAccount.name" | translate }} :</strong> {{ user.name }}</p>
+    <p><strong>{{ "infoAccount.email" | translate }} :</strong> {{ user.email }}</p>
+    <button class="button-edit" (click)="isEditing=true;">{{ "infoAccount.edit" | translate }}</button>
+
+    <button class="button-delete" (click)="isDeleting=true;">{{ "infoAccount.delete" | translate }}</button>
+    <app-delete-account *ngIf="isDeleting" (stopDeleting)="isDeleting=false"></app-delete-account>
+    <app-edit-account *ngIf="isEditing" (itemUpdated)="isEditing=false"></app-edit-account>
+  </div>
+  

@@ -58,5 +58,25 @@
         "priceRequired": "Le prix est requis",
         "priceInvalidValue": "Le prix doit être supérieur ou égal à 0",
         "add": "Ajouter un cadeau"
+    },
+    "account":{
+        "title": "Gestion de mon compte",
+        "edit": "Modifier mes informations",
+        "delete": "Supprimer mon compte"
+    },
+    "deleteAccount":{
+        "title": "Etes vous sûr de vouloir supprimer votre compte ?",
+        "delete": "Supprimer mon compte"
+    },
+    "editAccount":{
+        "title": "Modifier votre informations",
+        "edit": "Confirmer la modification"
+    },
+    "infoAccount":{
+        "title": "Mes informations",
+        "edit": "Modifier mes informations",
+        "delete": "Supprimer mon compte",
+        "name": "Nom",
+        "email": "Email"
     }
 }

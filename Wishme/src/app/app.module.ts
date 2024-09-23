@@ -22,6 +22,7 @@ import { AccountComponent } from './user/account/account.component';
 import { InfoAccountComponent } from './user/account/info-account/info-account.component';
 import { EditAccountComponent } from './user/account/edit-account/edit-account.component';
 import { DeleteAccountComponent } from './user/account/delete-account/delete-account.component';
+import { ConfirmComponent } from './shared/popup/confirm/confirm.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -42,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AccountComponent,
     InfoAccountComponent,
     EditAccountComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,

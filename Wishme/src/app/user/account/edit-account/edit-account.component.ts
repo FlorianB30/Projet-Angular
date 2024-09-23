@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-edit-account',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-account.component.scss']
 })
 export class EditAccountComponent {
+  @Output() itemUpdated = new EventEmitter<boolean>();
 
+  close(){
+    this.itemUpdated.emit(true);
+  }
 }

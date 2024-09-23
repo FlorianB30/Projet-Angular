@@ -21,6 +21,12 @@ export class UserService {
   ) {
   }
 
+  getMyInformations(): User {
+    this.authService.verifyToken()
+    return this.authService.getUserInfo()
+    
+  }
+
   getUserById(id: string): void {
     const user = this.http.get<User>(`${this.usersUrl}/${id}`);
     user.subscribe(

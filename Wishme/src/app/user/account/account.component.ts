@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/shared/interfaces';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-account',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AccountComponent {
 
+  currentUser: User | null = null
+
+  constructor(
+    private userService: UserService
+  ){}
+  ngOnInit(){
+    this.currentUser = this.userService.getMyInformations()
+  }
 }

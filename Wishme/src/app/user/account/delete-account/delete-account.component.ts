@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete-account',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-account.component.scss']
 })
 export class DeleteAccountComponent {
+  @Output() stopDeleting = new EventEmitter<boolean>();
 
+  close(){
+    this.stopDeleting.emit(true);
+  }
 }
