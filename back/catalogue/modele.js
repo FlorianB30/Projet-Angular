@@ -29,7 +29,7 @@ const writeItemsToFile = (items, callback) => {
 const createItem = (req, res) => {
     let newItem = req.body ;
     newItem.id = uuidv4()
-    newItem.price = newItem.price.toFixed(2)
+    newItem.price = parseFloat(newItem.price.toFixed(2))
     if (!newItem.name || !newItem.description || newItem.price === undefined) {
         return res.status(400).json({ message: 'Veuillez fournir un nom, une description et un prix.' });
     }
