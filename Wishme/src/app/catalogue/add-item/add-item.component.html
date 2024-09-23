@@ -1,18 +1,21 @@
-<section>
-  <h2>Ajouter un nouveau cadeau dans le catalogue</h2>
-  <form [formGroup]="addItem" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="name">Nom:</label>
-      <input type="text" id="name" formControlName="name" name="name" required>
-    </div>
-    <div>
-      <label for="description">Description:</label>
-      <textarea type="text" id="description" formControlName="description" name="description" required></textarea>
-    </div>
-    <div>
-      <label for="price">Prix:</label>
-      <input type="number" id="price" formControlName="price" name="price" required>
-    </div>
-    <button type="submit">Ajouter</button>
-  </form>
+<section class="overlay">
+  <div class="modal-content">
+    <button class="close-button" (click)="close()">✖</button>
+    <h2>Ajouter un nouveau cadeau dans le catalogue</h2>
+    <form [formGroup]="addItem" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Nom:</label>
+        <input type="text" id="name" formControlName="name" name="name" required>
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description" name="description" required></textarea>
+      </div>
+      <div>
+        <label for="price">Prix:</label>
+        <input type="number" id="price" formControlName="price" name="price" required>
+      </div>
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
 </section>

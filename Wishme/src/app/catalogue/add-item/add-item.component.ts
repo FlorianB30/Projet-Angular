@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ItemService } from '../../shared/services/item.service';
 import { Item } from '../../shared/interfaces';
 import { Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-item.component.scss']
 })
 export class AddItemComponent {
+  @Output() itemAdded = new EventEmitter<boolean>();
+
   newItem: Item = { id: "0", name: '', description: '', price: 0 };
   addItem!: FormGroup;
 
@@ -48,6 +50,11 @@ export class AddItemComponent {
         error => console.error('Erreur lors de l\'ajout de l\'item', error)
       );
     }
+    this.itemAdded.emit(true);
+  }
+
+  close(){
+    this.itemAdded.emit(false);
   }
   
 }

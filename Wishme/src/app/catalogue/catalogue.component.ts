@@ -11,6 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CatalogueComponent implements OnInit {
   catalogue: Items = [];
   isEditing = false;
+  isAddding = false;
+
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
   constructor(
     private itemService: ItemService,
@@ -28,17 +32,13 @@ export class CatalogueComponent implements OnInit {
       this.catalogue = items
     });
   }
-  addItem(): void {
-    this.isEditing = false;
-    // this.router.navigate(['addItem'], { relativeTo: this.route });
-  }
+
   viewDescription(itemId: string): void {
     this.router.navigate(['/catalogue', itemId], { relativeTo: this.route });
   }
   editItem(selectedItem: Item): void {
     this.isEditing = true;
     this.itemService.selectItem(selectedItem);
-    // this.router.navigate(['editItem', itemId], { relativeTo: this.route });
   }
   deleteItem(itemId: string): void {
     this.itemService.deleteItem(itemId).subscribe(
@@ -48,5 +48,26 @@ export class CatalogueComponent implements OnInit {
       },
       (error) => console.error('Erreur lors de la suppression de l\'item', error)
     );
+  }
+
+  get paginatedCatalogue(): Items {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.catalogue.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  nextPage(): void {
+    if ((this.currentPage * this.itemsPerPage) < this.catalogue.length) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.catalogue.length / this.itemsPerPage);
   }
 }

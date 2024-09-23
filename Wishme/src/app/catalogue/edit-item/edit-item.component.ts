@@ -69,4 +69,9 @@ export class EditItemComponent implements OnInit {
   get priceControl() {
     return this.editItemForm.get('price');
   }
+
+  close(){
+    this.itemUpdated.emit(false);
+  }
+  
 }
