@@ -3,11 +3,12 @@ const usersFilePath = 'bdd/users.json';
 
 const updateUser = (req, res) => {
     const { id } = req.params;
-    const updatedUser = req.body;
-
-    if (req.user.email !== updatedUser.email) {
+    let updatedUser = req.body;
+    
+    if (req.user.id !== id) {
         return res.status(403).json({ message: 'Vous ne pouvez mettre à jour que vos propres informations.' });
     }
+    updatedUser.id = id
 
     fs.readFile(usersFilePath, (err, data) => {
         if (err) {
@@ -47,7 +48,7 @@ const deleteUser = (req, res) => {
             return res.status(404).json({ message: 'Utilisateur non trouvé.' });
         }
 
-        if (req.user.email !== userToDelete.email) {
+        if (req.user.id !== id) {
             return res.status(403).json({ message: 'Vous ne pouvez supprimer que votre propre compte.' });
         }
         const newUsers = users.filter(user => user.id !== id);

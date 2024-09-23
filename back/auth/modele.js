@@ -51,7 +51,7 @@ const login = (req, res) => {
             return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
         }
 
-        const token = jwt.sign({ name: user.name, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+        const token = jwt.sign({ name: user.name, email: user.email, id: user.id }, SECRET_KEY, { expiresIn: '1h' });
 
         res.json({ token });
     });

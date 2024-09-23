@@ -1,16 +1,5 @@
 [
   {
-    "name": "toto",
-    "email": "a@a.cop",
-    "password": "12345678"
-  },
-  {
-    "id": "3c3a33ef-57e8-4f7b-acd0-77b64fa3b2b0",
-    "name": "toto",
-    "email": "a@aa.cop",
-    "password": "12345678"
-  },
-  {
     "id": "40e7b3f7-8a08-4e70-9f47-7fefea57f89a",
     "name": "toto",
     "email": "test@gmail.com",

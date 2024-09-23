@@ -50,6 +50,8 @@ export class UserService {
       error => console.error('Erreur lors de la recuperation des items', error)
     );
   }
+
+  
   // getUserById(): Observable<User> {
   //   const token = this.authService.getToken();
   //   return this.http.get(`${this.authUrl}/verify`, {
