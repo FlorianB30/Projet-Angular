@@ -74,6 +74,10 @@ const updateUser = (req, res) => {
     const { id } = req.params;
     const updatedUser = req.body;
 
+    if (req.user.email !== updatedUser.email) {
+        return res.status(403).json({ message: 'Vous ne pouvez mettre à jour que vos propres informations.' });
+    }
+
     fs.readFile('bdd/users.json', (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
@@ -106,11 +110,16 @@ const deleteUser = (req, res) => {
         }
 
         let users = JSON.parse(data);
-        const newUsers = users.filter(user => user.id !== id);
+        const userToDelete = users.find(user => user.id === id);
 
-        if (users.length === newUsers.length) {
+        if (!userToDelete) {
             return res.status(404).json({ message: 'Utilisateur non trouvé.' });
         }
+
+        if (req.user.email !== userToDelete.email) {
+            return res.status(403).json({ message: 'Vous ne pouvez supprimer que votre propre compte.' });
+        }
+        const newUsers = users.filter(user => user.id !== id);
 
         fs.writeFile('bdd/users.json', JSON.stringify(newUsers, null, 2), (err) => {
             if (err) {
