@@ -25,7 +25,8 @@
           <small *ngIf="priceControl?.errors?.['min']">{{ "addItem.priceInvalidValue" | translate }}.</small>
         </div>
       </div>
-      <button type="submit">{{ "addItem.add" | translate }}</button>
+      <!-- <button type="submit">{{ "addItem.add" | translate }}</button> -->
+      <button type="submit" [disabled]="addItem.invalid">{{ "addItem.add" | translate }}</button>
     </form>
   </div>
 </section>

@@ -7,7 +7,7 @@ import { Item, Items } from '../interfaces';
   providedIn: 'root'
 })
 export class ItemService {
-  private apiUrl = 'http://localhost:3000/catalogue'; 
+  private catalogueUrl = 'http://localhost:3000/catalogue'; 
   private selectedItemSource = new BehaviorSubject<Item | null>(null);
   selectedItem$ = this.selectedItemSource.asObservable();
   private itemsSource = new BehaviorSubject<Items>([]);
@@ -23,7 +23,7 @@ export class ItemService {
   }
 
   getItems(): void {
-    const items = this.http.get<Items>(this.apiUrl);
+    const items = this.http.get<Items>(this.catalogueUrl);
     items.subscribe(
       (data) => {
         this.itemsSource.next(data);
@@ -33,18 +33,18 @@ export class ItemService {
   }
 
   getItem(id: string): Observable<Item> {
-    return this.http.get<Item>(`${this.apiUrl}/${id}`);
+    return this.http.get<Item>(`${this.catalogueUrl}/${id}`);
   }
 
   addItem(item: Item): Observable<Item> {
-    return this.http.post<Item>(this.apiUrl, item);
+    return this.http.post<Item>(this.catalogueUrl, item);
   }
 
   updateItem(item: Item): Observable<Item> {
-    return this.http.put<Item>(`${this.apiUrl}/${item.id}`, item);
+    return this.http.put<Item>(`${this.catalogueUrl}/${item.id}`, item);
   }
 
   deleteItem(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.catalogueUrl}/${id}`);
   }
 }

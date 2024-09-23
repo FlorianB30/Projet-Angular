@@ -22,7 +22,6 @@ app.get('/users/email/:email', getUserByEmail);
 app.put('/users/:id', authenticateToken, updateUser);
 app.delete('/users/:id', authenticateToken, deleteUser);
 
-
 app.get('/catalogue', getItems);
 app.get('/catalogue/:id', getItemById);
 app.post('/catalogue', createItem);

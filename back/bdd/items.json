@@ -237,30 +237,6 @@
     "id": "38",
     "name": "Product 38",
     "description": "Description for Product 38",
-    "price": 15.25
-  },
-  {
-    "id": "39",
-    "name": "Product 39",
-    "description": "Description for Product 39",
-    "price": 6.89
-  },
-  {
-    "id": "40",
-    "name": "Product 40",
-    "description": "Description for Product 40",
-    "price": 50
-  },
-  {
-    "id": "21787963-42fb-452d-8187-6dc290185083",
-    "name": "testinsert",
-    "description": "testinsert",
-    "price": 123123.12
-  },
-  {
-    "id": "2836d26b-0d08-41d9-906e-6196cff8bf22",
-    "name": "testnotinstring",
-    "description": "testnotinstring",
-    "price": 321.32
+    "price": 55
   }
 ]
