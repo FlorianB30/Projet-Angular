@@ -35,11 +35,11 @@ export class CatalogueComponent implements OnInit {
   viewDescription(itemId: string): void {
     this.router.navigate(['/catalogue', itemId], { relativeTo: this.route });
   }
-  editItem(itemId: string): void {
+  editItem(selectedItem: Item): void {
     this.isEditing = true;
-    this.router.navigate(['editItem', itemId], { relativeTo: this.route });
+    this.itemService.selectItem(selectedItem);
+    // this.router.navigate(['editItem', itemId], { relativeTo: this.route });
   }
-
   deleteItem(itemId: string): void {
     this.itemService.deleteItem(itemId).subscribe(
       () => {

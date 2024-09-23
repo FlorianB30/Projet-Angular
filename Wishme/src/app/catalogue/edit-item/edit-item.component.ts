@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from '../../shared/services/item.service';
 import { Item } from '../../shared/models/item.model';
-import { Form, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-item',
@@ -16,23 +16,31 @@ export class EditItemComponent implements OnInit {
   
   // item!: Item;
   editItemForm!: FormGroup
-
   constructor(
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private itemService: ItemService
-  ) { }
+  ) { 
+    this.editItemForm = this.fb.group({
+      name: [''],
+      description: [''],
+      price: ['']
+    });
+  }
 
   ngOnInit() {
+    this.itemService.selectedItem$.subscribe(selectedItem => {
+      if (selectedItem){
+        this.editItemForm.patchValue({
+          name: selectedItem.name,
+          description: selectedItem.description,
+          price: selectedItem.price,
+        });
+      }
+
+    });
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.itemService.getItem(id).subscribe(
-        item => this.item = item,
-        error => console.error('Erreur lors du chargement de l\'item', error)
-      );
-    } else {
-      console.error('ID is null');
-    }
   }
 
   onSubmit() {

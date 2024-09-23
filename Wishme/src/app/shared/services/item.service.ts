@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Item } from '../models/item.model';
 
 @Injectable({
@@ -8,8 +8,16 @@ import { Item } from '../models/item.model';
 })
 export class ItemService {
   private apiUrl = 'http://localhost:3000/catalogue'; 
+  private selectedItemSource = new BehaviorSubject<Item | null>(null);
+  selectedItem$ = this.selectedItemSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.selectedItemSource.next(null);
+  }
+
+  selectItem(selectedItem: Item){
+    this.selectedItemSource.next(selectedItem);
+  }
 
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.apiUrl);
