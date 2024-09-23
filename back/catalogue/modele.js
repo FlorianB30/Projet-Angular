@@ -79,8 +79,7 @@ const getItemById = (req, res) => {
 const updateItem = (req, res) => {
     const { id } = req.params;
     const updatedItem = req.body;
-    updatedItem.price = updatedItem.price.toFixed(2)
-
+    updatedItem.price =  parseFloat(updatedItem.price.toFixed(2))
     readItemsFromFile((err, items) => {
         if (err) {
             return res.status(500).json({ message: err.message });
