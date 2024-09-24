@@ -57,15 +57,23 @@ export class UserService {
     );
   }
 
-  updateUser(user: User): Observable<number> {
-    return this.http.put(this.usersUrl, user, { observe: 'response' }).pipe(
-      map(response => {
-        return response.status;
-      }),
-      catchError((error) => {
-        console.error('Erreur lors de l\'enregistrement', error);
-        return of(error.status);
-      })
+  updateUser(user: User): void {
+    const token = this.authService.getToken();
+    const response =this.http.put(
+      this.usersUrl,
+      user,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        observe: 'response'
+      }
+    )
+    response.subscribe(
+      (data) => {
+        console.log(data.status)
+      },
+      error => console.error('Erreur lors de la recuperation des items', error)
     );
   }
 

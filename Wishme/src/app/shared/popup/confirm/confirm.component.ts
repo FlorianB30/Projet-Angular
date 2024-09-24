@@ -6,7 +6,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent {
-  constructor() {}
-  confirm: boolean = false
   @Output() valueSubmitted  = new EventEmitter<boolean>();
+  confirm: boolean = false
+
+  constructor() {}
 }

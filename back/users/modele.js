@@ -3,9 +3,9 @@ const usersFilePath = 'bdd/users.json';
 
 const updateUser = (req, res) => {
     const id = req.user.id;
-    let updatedUser = req.body;
+    let updatedUser = { ...req.body };
+    delete updatedUser.password;
     updatedUser.id = id
-
     fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
@@ -31,7 +31,6 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
     const id = req.user.id;
-    console.log(id)
     fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });

@@ -6,6 +6,6 @@
 
     <button class="button-delete" (click)="isDeleting=true;">{{ "infoAccount.delete" | translate }}</button>
     <app-delete-account *ngIf="isDeleting" (stopDeleting)="isDeleting=false"></app-delete-account>
-    <app-edit-account *ngIf="isEditing" (itemUpdated)="isEditing=false"></app-edit-account>
+    <app-edit-account *ngIf="isEditing" (userUpdated)="isEditing=false" [user]="user" ></app-edit-account>
   </div>
   

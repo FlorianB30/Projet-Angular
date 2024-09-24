@@ -66,11 +66,15 @@
     },
     "deleteAccount":{
         "title": "Etes vous sûr de vouloir supprimer votre compte ?",
-        "delete": "Supprimer mon compte"
+        "delete": "Supprimer mon compte",
+        "areYouSure": "Voulez vous vraiment supprimer votre compte ?",
+        "confirm": "Confirmer la suppression du compte"
     },
     "editAccount":{
         "title": "Modifier votre informations",
-        "edit": "Confirmer la modification"
+        "edit": "Confirmer la modification",
+        "name": "Nom",
+        "email": "Email"
     },
     "infoAccount":{
         "title": "Mes informations",
