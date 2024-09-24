@@ -49,7 +49,8 @@ export class LoginComponent implements OnInit {
           id: null,
           name: "",
           email: this.myForm.value.email,
-          password: this.myForm.value.password
+          password: this.myForm.value.password,
+          friends: []
         }
         this.authService.login(data).subscribe((code) => {
           if (this.authService.isConnected()

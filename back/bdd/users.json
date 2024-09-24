@@ -3,60 +3,70 @@
     "id": "91dcd399-6e1d-40bf-981f-9ca1ab1d0fa3",
     "name": "azeaze",
     "email": "test2@gmail.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "f360dcca-8002-4723-82c5-b8dd355a82fe",
     "name": "aze",
     "email": "testa@gmail.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "1b138c33-dbce-4462-931e-53b697b9df4c",
     "name": "jeanjean",
     "email": "jeanjean@jean.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "638cda8c-ee37-46d0-9772-67fb71600161",
     "name": "tpoto",
     "email": "a@a.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "759c7c6d-29e6-4477-bf88-b004436b81eb",
     "name": "tutu",
     "email": "t@a.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "f001fb54-9ba3-4af2-8432-10a4591aa9f7",
     "name": "tata",
     "email": "t@tt.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
     "name": "newUser",
     "email": "newUser@ud.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "53c4e996-548a-49df-aade-f647940f914f",
     "name": "toto",
     "email": "toto@toto.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
     "name": "felix",
-    "email": "fefe@felix.com",
-    "password": "Azerty@123"
+    "email": "fefe@fefe.com",
+    "password": "Azerty@123",
+    "friends": []
   },
   {
     "id": "testestestest",
     "name": "aze",
     "email": "Azerty@123.com",
-    "password": "Azerty@123"
+    "password": "Azerty@123",
+    "friends": []
   }
 ]

@@ -56,7 +56,8 @@ export class RegisterComponent implements OnInit {
           id: null,
           name: this.myForm.value.name,
           email: this.myForm.value.email,
-          password: this.myForm.value.password
+          password: this.myForm.value.password,
+          friends: []
         }
         this.authService.register(data).subscribe((code) => {
           if (code == 201){

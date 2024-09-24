@@ -5,6 +5,7 @@ const updateUser = (req, res) => {
     const id = req.user.id;
     let updatedUser = { ...req.body };
     delete updatedUser.password;
+    delete updatedUser.friends;
     updatedUser.id = id
     fs.readFile(usersFilePath, (err, data) => {
         if (err) {
