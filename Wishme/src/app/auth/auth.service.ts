@@ -66,7 +66,6 @@ export class AuthService {
 
   verifyToken(): void {
     const token = this.getToken();
-    console.log(token)
     const response = this.http.get(`${this.authUrl}/verify`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -74,7 +73,6 @@ export class AuthService {
     });
     response.subscribe(
       (res) => {
-        console.log(`response: ${res}`)
         this.tokenIsVerifiedSource.next(true);
         const token = this.getToken()
         if (token){

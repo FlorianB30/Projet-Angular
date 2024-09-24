@@ -43,7 +43,6 @@ export class CatalogueComponent implements OnInit {
   deleteItem(itemId: string): void {
     this.itemService.deleteItem(itemId).subscribe(
       () => {
-        console.log('Item supprimé avec succès');
         this.loadCatalogue();
       },
       (error) => console.error('Erreur lors de la suppression de l\'item', error)

@@ -2,7 +2,17 @@
     <div class="modal-content">
         <button class="close-button" (click)="close()">✖</button>
         <h2>{{ "deleteAccount.title" | translate }}</h2>
-        <button>{{ "deleteAccount.delete" | translate }}</button>
+        <button  (click)="validate=true">{{ "deleteAccount.delete" | translate }}</button>
     </div>
+        
+    <app-confirm *ngIf="validate" (valueSubmitted)="getResponse($event)" >
+        <div popup-header>
+            Avez vous terminé ?
+            <button md-button (click)="this.validate = false;" class="close-button">X</button>
+        </div>
+        <div popup-content>
+            Confirmez pour aller au resultat.
+        </div>
+    </app-confirm>
   </section>
     

@@ -1,11 +1,5 @@
 [
   {
-    "id": "40e7b3f7-8a08-4e70-9f47-7fefea57f89a",
-    "name": "toto",
-    "email": "test@gmail.com",
-    "password": "Azerty@123"
-  },
-  {
     "id": "91dcd399-6e1d-40bf-981f-9ca1ab1d0fa3",
     "name": "azeaze",
     "email": "test2@gmail.com",
@@ -15,12 +9,6 @@
     "id": "f360dcca-8002-4723-82c5-b8dd355a82fe",
     "name": "aze",
     "email": "testa@gmail.com",
-    "password": "Azerty@123"
-  },
-  {
-    "id": "8ff66959-96e5-4d74-b6f7-45cd4f4b4edc",
-    "name": "jeanjean",
-    "email": "test3@gmail.com",
     "password": "Azerty@123"
   },
   {

@@ -15,12 +15,11 @@ app.post('/auth/register', register);
 app.post('/auth/login', login);
 app.get('/auth/verify', authenticateToken, verify);
 
-
 app.get('/users', getUsers);
 app.get('/users/:id', getUserById);
 app.get('/users/email/:email', getUserByEmail);
-app.put('/users/:id', authenticateToken, updateUser);
-app.delete('/users/:id', authenticateToken, deleteUser);
+app.put('/users', authenticateToken, updateUser);
+app.delete('/users', authenticateToken, deleteUser);
 
 app.get('/catalogue', getItems);
 app.get('/catalogue/:id', getItemById);

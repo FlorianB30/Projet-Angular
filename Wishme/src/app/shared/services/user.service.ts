@@ -58,7 +58,7 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<number> {
-    return this.http.put(`${this.usersUrl}/${user.id}`, user, { observe: 'response' }).pipe(
+    return this.http.put(this.usersUrl, user, { observe: 'response' }).pipe(
       map(response => {
         return response.status;
       }),
@@ -69,22 +69,19 @@ export class UserService {
     );
   }
 
-  deleteUser(id: string): Observable<number> {
+  deleteUser(): void {
     const token = this.authService.getToken();
-    return this.http.delete(`${this.usersUrl}/${id}`, {
+    const response = this.http.delete(this.usersUrl, {
       headers: {
           Authorization: `Bearer ${token}`
       },
       observe: 'response'
-  }).pipe(
-      map(response => {
-        return response.status;
-      }),
-      catchError((error) => {
-        console.error('Erreur lors de l\'enregistrement', error);
-        return of(error.status);
-      })
+    })
+    response.subscribe(
+      (data) => {
+        console.log(data.status)
+      },
+      error => console.error('Erreur lors de la recuperation des items', error)
     );
   }
-
 }
