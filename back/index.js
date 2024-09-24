@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 const { register, login, authenticateToken, verify } = require('./auth/modele');
-const { updateUser, deleteUser, getUsers, getUserById, getUserByEmail } = require('./users/modele');
+const { updateUser, deleteUser, getUsers, getUserById, getUserByEmail, addFriend, removeFriend, getFriends } = require('./users/modele');
 const { createItem, getItems, getItemById, updateItem, deleteItem } = require('./catalogue/modele');
 
 app.use(cors());
@@ -16,9 +16,12 @@ app.post('/auth/login', login);
 app.get('/auth/verify', authenticateToken, verify);
 
 app.get('/users', getUsers);
+app.get('/users/friends', authenticateToken, getFriends);
 app.get('/users/:id', getUserById);
 app.get('/users/email/:email', getUserByEmail);
 app.put('/users', authenticateToken, updateUser);
+app.put('/users/friend/add', authenticateToken, addFriend);
+app.put('/users/friend/remove', authenticateToken, removeFriend);
 app.delete('/users', authenticateToken, deleteUser);
 
 app.get('/catalogue', getItems);
