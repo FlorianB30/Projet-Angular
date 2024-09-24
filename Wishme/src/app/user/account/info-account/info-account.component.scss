@@ -1,0 +1,63 @@
+// Styles pour le composant InfoAccount
+
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2em; // Augmentation de la taille pour plus de visibilité
+    color: #007bff; // Couleur bleu pour correspondre au cadre
+}
+
+.user-info {
+    max-width: 700px; // Largeur maximale élargie
+    margin: 30px auto; // Centre la section avec plus de marge
+    padding: 30px; // Padding interne plus grand
+    border: 2px solid #007bff; // Bordure bleu plus épaisse
+    border-radius: 10px; // Coins arrondis plus doux
+    background-color: #f0f8ff; // Bleu clair pour contraste avec la bordure
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Ombre pour un effet de profondeur
+    text-align: center; // Centrer le texte dans la section
+}
+
+.user-info p {
+    margin: 15px 0; // Plus d'espacement autour des paragraphes
+    font-size: 1.3em; // Taille de police augmentée pour une meilleure lisibilité
+    color: #333; // Texte en couleur foncée pour bon contraste
+    line-height: 1.6; // Espacement entre les lignes pour plus d'aération
+}
+
+.button-container {
+    display: flex; // Utiliser flexbox pour répartir les boutons
+    justify-content: space-evenly; // Répartir les boutons équitablement sur la ligne
+    margin: 20px 0; // Ajouter une marge autour du conteneur de boutons
+}
+
+.button-edit, .button-delete {
+    padding: 12px 25px; // Padding augmenté pour des boutons plus grands
+    border-radius: 5px; // Coins arrondis légèrement
+    font-size: 1.1em; // Taille de police ajustée
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s; // Transition douce pour les effets visuels
+
+    &:hover {
+        transform: scale(1.05); // Légère mise en avant au survol
+    }
+}
+
+.button-edit {
+    background-color: #28a745; // Vert pour l'édition
+    color: white;
+
+    &:hover {
+        background-color: #11e23e; // Vert plus vif au survol
+    }
+}
+
+.button-delete {
+    background-color: #a31818; // Rouge pour la suppression
+    color: white;
+
+    &:hover {
+        background-color: #ff0000; // Rouge plus vif au survol
+    }
+}

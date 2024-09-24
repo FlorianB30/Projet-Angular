@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
           && typeof( this.myForm.value.password) == "string"
       ){
         let data: User = {
+          id: null,
           name: "",
           email: this.myForm.value.email,
           password: this.myForm.value.password

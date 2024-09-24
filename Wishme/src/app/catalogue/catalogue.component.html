@@ -1,23 +1,34 @@
-<h2>Catalogue de Cadeaux</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Prix</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of catalogue">
-      <td>{{ item.name }}</td>
-      <td>{{ item.price }}</td>
-      <td>
-        <button (click)="viewDescription(item.id)">Voir la description</button>
-        <button (click)="editItem(item)">Modifier</button>
-        <button (click)="deleteItem(item.id)">Supprimer</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<app-add-item *ngIf="!isEditing"></app-add-item>
-<app-edit-item *ngIf="isEditing"></app-edit-item>
+<h2>{{ "catalogue.title" | translate }}</h2>
+<button class="button-add" (click)="isAddding=true;">{{ "catalogue.add" | translate }}</button>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>{{ "catalogue.name" | translate }}</th>
+        <th>{{ "catalogue.price" | translate }}</th>
+        <th>{{ "catalogue.action" | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paginatedCatalogue">
+        <td>{{ item.name }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+          <button *ngIf="item.id" (click)="viewDescription(item.id)">{{ "catalogue.description" | translate }}</button>
+          <button (click)="editItem(item)">{{ "catalogue.modify" | translate }}</button>
+          <button *ngIf="item.id" (click)="deleteItem(item.id)">{{ "catalogue.delete" | translate }}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination">
+  <button (click)="previousPage()" [disabled]="currentPage === 1">{{ "catalogue.previous" | translate }}</button>
+  <span>{{ "catalogue.page" | translate }} {{ currentPage }} {{ "catalogue.on" | translate }} {{ totalPages() }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages()">{{ "catalogue.next" | translate }}</button>
+</div>
+
+<app-add-item *ngIf="isAddding" (itemAdded)="isAddding=false"></app-add-item>
+<app-edit-item *ngIf="isEditing" (itemUpdated)="isEditing=false"></app-edit-item>

@@ -1,18 +1,25 @@
-<section>
-    <h2>Modifier le cadeau dans le catalogue</h2>
+<section class="overlay">
+  <div class="modal-content">
+    <button class="close-button" (click)="close()">✖</button>
+    <h2>{{ "editItem.title" | translate }}</h2>
     <form [formGroup]="editItemForm" (ngSubmit)="onSubmit()">
-        <div>
-            <label for="name">Name:</label>
-            <input id="name" formControlName="name" type="text">
+      <div>
+        <label for="name">{{ "editItem.name" | translate }}:</label>
+        <input id="name" formControlName="name" type="text">
+      </div>
+      <div>
+        <label for="description">{{ "editItem.description" | translate }}:</label>
+        <textarea id="description" formControlName="description"></textarea>
+      </div>
+      <div>
+        <label for="price">{{ "editItem.price" | translate }}:</label>
+        <input id="price" formControlName="price" type="number">
+        <div *ngIf="priceControl?.invalid && priceControl?.touched">
+          <small *ngIf="priceControl?.errors?.['min']">{{ "editItem.priceInvalidValue" | translate }}.</small>
         </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea id="description" formControlName="description"></textarea>
-        </div>
-        <div>
-            <label for="price">Price:</label>
-            <input id="price" formControlName="price" type="number">
-        </div>
-        <button type="submit">Modifier le cadeau</button>
+      </div>
+      <button type="submit" [disabled]="editItemForm.invalid">{{ "editItem.modify" | translate }}</button>
     </form>
+  </div>
 </section>
+  

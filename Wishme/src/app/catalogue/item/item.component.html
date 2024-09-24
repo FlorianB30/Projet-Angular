@@ -1,9 +1,7 @@
-<div *ngIf="item">
-    <h2>{{ item.name }}</h2>
-    <p>ID: {{ item.id }}</p>
-    <p>Description: {{ item.description }}</p>
-    <p>Prix: {{ item.price | currency:'EUR':'symbol':'1.2-2' }}</p>
-  </div>
-  <button routerLink="/catalogue">Retour à la liste</button>
-
-  
+<div class="item-container" *ngIf="item">
+  <h2>{{ item.name }}</h2>
+  <p>{{ "catalogueItem.id" | translate }}: {{ item.id }}</p>
+  <p>{{ "catalogueItem.description" | translate }}: {{ item.description }}</p>
+  <p>{{ "catalogueItem.price" | translate }}: {{ item.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+  <button routerLink="/catalogue">{{ "catalogueItem.backToListe" | translate }}</button>
+</div>

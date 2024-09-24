@@ -13,9 +13,12 @@ export class AboutComponent {
     this.authService.verifyToken()
   }
   tokenIsVerified = false
+  ngOnInit(): void {
+    this.authService.tokenIsVerified$.subscribe(tokenIsVerified => {
+      this.tokenIsVerified = tokenIsVerified;
+    });
+  }
   verifyToken(){
-    this.authService.verifyToken().subscribe(isValid => {
-      this.tokenIsVerified = isValid
-  });
+    this.authService.verifyToken();
   }
 }

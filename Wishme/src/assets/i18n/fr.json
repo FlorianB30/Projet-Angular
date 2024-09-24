@@ -4,7 +4,11 @@
         "logIn": "Se connecter",
         "register": "S'enregistrer",
         "welcome": "Bienvenu",
-        "about": "À propos"
+        "about": "À propos",
+        "catalog": "Catalogue",
+        "home": "Accueil",
+        "contact": "Nous contacter",
+        "account": "Mon compte"
     },
     "login":{
         "password": "Mot de passe",
@@ -15,5 +19,68 @@
         "password": "Mot de passe",
         "confirm": "Confirmation du mot de passe",
         "register": "S'enregistrer"
+    },
+    "catalogue":{
+        "title": "Catalogue de cadeaux",
+        "add": "Ajouter",
+        "name": "Nom",
+        "price": "Prix",
+        "action": "Actions",
+        "description": "Voir la description",
+        "modify": "Modifier",
+        "delete": "Supprimer",
+        "page": "Page",
+        "on": "sur",
+        "previous": "Précédent",
+        "next": "Suivant"
+    },
+    "catalogueItem":{
+        "id": "Référence produit",
+        "description": "Description",
+        "price": "Prix",
+        "backToListe": "Retour à la liste"
+    },
+    "editItem":{
+        "title": "Modifier le cadeau dans le catalogue",
+        "name": "Nom",
+        "description": "Description",
+        "price": "prix",
+        "priceInvalidValue": "Le prix doit être supérieur ou égal à 0",
+        "modify": "Modifier le cadeau"
+    },
+    "addItem":{
+        "title": "Ajouter un nouveau cadeau dans le catalogue",
+        "name": "Nom",
+        "description": "Description",
+        "price": "Prix",
+        "nameRequired": "Le nom est requis",
+        "descriptionRequired": "Le description est requise",
+        "priceRequired": "Le prix est requis",
+        "priceInvalidValue": "Le prix doit être supérieur ou égal à 0",
+        "add": "Ajouter un cadeau"
+    },
+    "account":{
+        "title": "Gestion de mon compte",
+        "edit": "Modifier mes informations",
+        "delete": "Supprimer mon compte"
+    },
+    "deleteAccount":{
+        "title": "Etes vous sûr de vouloir supprimer votre compte ?",
+        "delete": "Supprimer mon compte",
+        "areYouSure": "Voulez vous vraiment supprimer votre compte ?",
+        "confirm": "Confirmer la suppression du compte"
+    },
+    "editAccount":{
+        "title": "Modifier votre informations",
+        "edit": "Confirmer la modification",
+        "name": "Nom",
+        "email": "Email"
+    },
+    "infoAccount":{
+        "title": "Mes informations",
+        "edit": "Modifier mes informations",
+        "delete": "Supprimer mon compte",
+        "name": "Nom",
+        "email": "Email"
     }
 }

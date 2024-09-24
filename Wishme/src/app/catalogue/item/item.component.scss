@@ -1,0 +1,40 @@
+/* catalogue-item.component.scss */
+
+.item-container {
+    max-width: 600px; /* Largeur maximale pour le contenu */
+    margin: 150px auto; /* Centrer le conteneur */
+    padding: 20px; /* Espacement intérieur */
+    background-color: #ffffff; /* Couleur de fond */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre légère */
+}
+
+h2 {
+    font-size: 1.8em; /* Taille du titre */
+    margin-bottom: 15px; /* Espace sous le titre */
+    color: #007bff; /* Couleur du titre */
+    text-align: center; /* Centrer le titre */
+}
+
+p {
+    font-size: 1.1em; /* Taille de police pour les paragraphes */
+    margin: 10px 0; /* Espace entre les paragraphes */
+    color: #333; /* Couleur du texte */
+}
+
+button {
+    display: block; /* Occupe toute la largeur disponible */
+    width: 100%; /* Largeur complète */
+    padding: 12px; /* Espacement intérieur */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    font-size: 1.1em; /* Taille de police */
+    cursor: pointer; /* Curseur en main au survol */
+    transition: background-color 0.3s; /* Transition pour le hover */
+
+    &:hover {
+        background-color: #0056b3; /* Couleur au survol */
+    }
+}

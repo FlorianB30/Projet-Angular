@@ -1,81 +1,31 @@
 const express = require('express');
-const fs = require('fs');
-const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-const { v4: uuidv4 } = require('uuid'); 
 const cors = require('cors');
 const app = express();
-const PORT = 3005;
-const SECRET_KEY = "MySecretKeyFromEnv";
+const PORT = 3000;
+
+const { register, login, authenticateToken, verify } = require('./auth/modele');
+const { updateUser, deleteUser, getUsers, getUserById, getUserByEmail } = require('./users/modele');
+const { createItem, getItems, getItemById, updateItem, deleteItem } = require('./catalogue/modele');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.post('/register', (req, res) => {
-    const newUser = req.body;
-    if (!newUser.email || !newUser.password || !newUser.name) {
-        return res.status(400).json({ message: 'Veuillez fournir un nom d\'utilisateur, un email et un mot de passe.' });
-    }
 
-    fs.readFile('users.json', (err, data) => {
-        if (err) {
-            return res.status(500).json({ message: 'Erreur de lecture du fichier' });
-        }
+app.post('/auth/register', register);
+app.post('/auth/login', login);
+app.get('/auth/verify', authenticateToken, verify);
 
-        const users = JSON.parse(data);
+app.get('/users', getUsers);
+app.get('/users/:id', getUserById);
+app.get('/users/email/:email', getUserByEmail);
+app.put('/users', authenticateToken, updateUser);
+app.delete('/users', authenticateToken, deleteUser);
 
-        const existingUser = users.find(user => user.email === newUser.email);
-        if (existingUser) {
-            return res.status(409).json({ message: 'Cet utilisateur existe déjà.' });
-        }
-
-        const userWithId = { id: uuidv4(), ...newUser };
-
-        users.push(userWithId);
-
-        fs.writeFile('users.json', JSON.stringify(users), (err) => {
-            if (err) {
-                return res.status(500).json({ message: 'Erreur d\'écriture dans le fichier' });
-            }
-            res.status(201).json({ message: 'Utilisateur ajouté avec succès', user: userWithId });
-        });
-    });
-});
-
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
-
-    fs.readFile('users.json', (err, data) => {
-        if (err) {
-            return res.status(500).json({ message: 'Erreur de lecture du fichier' });
-        }
-
-        const users = JSON.parse(data);
-        const user = users.find(u => u.email === email && u.password === password);
-
-        if (!user) {
-            return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
-        }
-
-        const token = jwt.sign({ name: user.name, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
-
-        res.json({ token });
-    });
-});
-
-const authenticateToken = (req, res, next) => {
-    const token = req.headers['authorization'] && req.headers['authorization'].split(' ')[1];
-    if (!token) return res.sendStatus(401);
-
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.sendStatus(403);
-        req.user = user;
-        next();
-    });
-};
-
-app.get('/verify', authenticateToken, (req, res) => {
-    res.json({ valid: true, user: req.user });
-});
+app.get('/catalogue', getItems);
+app.get('/catalogue/:id', getItemById);
+app.post('/catalogue', createItem);
+app.put('/catalogue/:id', updateItem);
+app.delete('/catalogue/:id', deleteItem);
 
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur le port ${PORT}`);

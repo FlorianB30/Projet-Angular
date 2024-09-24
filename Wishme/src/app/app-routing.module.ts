@@ -7,6 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './interface/home/home.component';
 import { AboutComponent } from './interface/about/about.component';
+import { AccountComponent } from './user/account/account.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'editItem/:id',
     component: EditItemComponent
+  },
+  {
+    path: 'account',
+    component: AccountComponent
   },
 ];
 

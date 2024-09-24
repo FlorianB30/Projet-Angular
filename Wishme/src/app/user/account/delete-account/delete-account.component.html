@@ -1,0 +1,17 @@
+<section class="overlay">
+    <div class="modal-content">
+        <button class="close-button" (click)="close()">✖</button>
+        <h2>{{ "deleteAccount.title" | translate }}</h2>
+        <button  (click)="validate=true">{{ "deleteAccount.delete" | translate }}</button>
+    </div>
+        
+    <app-confirm *ngIf="validate" (valueSubmitted)="getResponse($event)" >
+        <div popup-header>
+            {{ "deleteAccount.areYouSure" | translate }}
+            <button md-button (click)="this.validate = false;" class="close-button">X</button>
+        </div>
+        <div popup-content>
+            {{ "deleteAccount.confirm" | translate }}
+        </div>
+    </app-confirm>
+</section>

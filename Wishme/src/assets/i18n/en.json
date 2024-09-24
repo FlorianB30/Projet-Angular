@@ -4,7 +4,11 @@
         "logIn": "Connect",
         "register": "Register",
         "welcome": "Welcome",
-        "about": "About"
+        "about": "About",
+        "catalog": "Catalog",
+        "home": "Home",
+        "contact": "Contact us",
+        "account": "My account"
     },
     "login":{
         "password": "Password",
@@ -15,5 +19,68 @@
         "password": "Password",
         "confirm": "Confirm password",
         "register": "Register"
+    },
+    "catalogue":{
+        "title": "Gift Catalog",
+        "add": "Add",
+        "name": "Name",
+        "price": "Price",
+        "action": "Actions",
+        "description": "View description",
+        "modify": "Modify",
+        "delete": "Delete",
+        "page": "Page",
+        "on": "on",
+        "previous": "Previous",
+        "next": "Next"
+    },
+    "catalogueItem":{
+        "id": "Product number",
+        "description": "Description",
+        "price": "Price",
+        "backToListe": "Back to list"
+    },
+    "editItem":{
+        "title": "Modify gift in catalog",
+        "name": "Name",
+        "description": "Description",
+        "price": "Price",
+        "priceInvalidValue": "The price must be greater than or equal to 0",
+        "modify": "Modify gift"
+    },
+    "addItem":{
+        "title": "Add a new gift to the catalog",
+        "name": "Name",
+        "description": "Description",
+        "price": "Price",
+        "nameRequired": "Name is required",
+        "descriptionRequired": "Description is required",
+        "priceRequired": "Price is required",
+        "priceInvalidValue": "The price must be greater than or equal to 0",
+        "add": "Add gift"
+    },
+    "account":{
+        "title": "Manage my account",
+        "edit": "Edit my informations",
+        "delete": "Delete my account"
+    },
+    "deleteAccount":{
+        "title": "Are you sure you want to delete your account ?",
+        "delete": "Delete my account",
+        "areYouSure": "Are you sure to want to delete your account ?",
+        "confirm": "Confirm to delete your account"
+    },
+    "editAccount":{
+        "title": "Modify your informations",
+        "edit": "Confirm modifications",
+        "name": "Name",
+        "email": "Email"
+    },
+    "infoAccount":{
+        "title": "My informations",
+        "edit": "Edit my informations",
+        "delete": "Delete my account",
+        "name": "Name",
+        "email": "Email"
     }
 }
