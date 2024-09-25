@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@angular/common": "^18.2.4",
-    "@angular/core": "^18.2.4"
-  },
-  "devDependencies": {
-    "@types/angular": "^1.8.9"
-  }
-}

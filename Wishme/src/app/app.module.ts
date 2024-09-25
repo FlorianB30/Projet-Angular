@@ -9,6 +9,10 @@ import { CommonModule } from '@angular/common';
 import { AddItemComponent } from './catalogue/add-item/add-item.component';
 import { EditItemComponent } from './catalogue/edit-item/edit-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListComponent } from './list/list.component';
+import { ListItemComponent } from './list/list-item/list-item.component';
+import { ListPageComponent } from './list-page/list-page.component';
+import { ListSharedComponent } from './list-shared/list-shared.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     CatalogueComponent,
     ItemComponent,
     AddItemComponent,
-    EditItemComponent
+    EditItemComponent,
+    ListComponent,
+    ListItemComponent,
+    ListPageComponent,
+    ListSharedComponent
   ],
   imports: [
     BrowserModule,
