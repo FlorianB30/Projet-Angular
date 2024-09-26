@@ -105,7 +105,8 @@ export class AuthService {
       id: null,
       name: "",
       email: "",
-      password: null
+      password: null,
+      friends: []
     }
     const email =  this.storageService.getItem("WishMeEmail")
     const name =  this.storageService.getItem("WishMeName")

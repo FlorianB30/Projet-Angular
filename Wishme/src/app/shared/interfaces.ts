@@ -3,6 +3,7 @@ export interface User {
   name: string;
   email: string;
   password: string | null;
+  friends: string[];
 }
 
 export interface Users extends Array<User>{}
