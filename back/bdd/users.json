@@ -60,7 +60,11 @@
     "name": "felix",
     "email": "fefe@fefe.com",
     "password": "Azerty@123",
-    "friends": ["1b138c33-dbce-4462-931e-53b697b9df4c","testestestest","53c4e996-548a-49df-aade-f647940f914f"]
+    "friends": [
+      "1b138c33-dbce-4462-931e-53b697b9df4c",
+      "testestestest",
+      "53c4e996-548a-49df-aade-f647940f914f"
+    ]
   },
   {
     "id": "testestestest",
