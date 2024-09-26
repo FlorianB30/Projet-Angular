@@ -41,13 +41,13 @@ const createList = (req, res) => {
             return res.status(500).json({ message: err.message });
         }
 
-        lists.push(newItem);
+        lists.push(newList);
 
         writeListsToFile(lists, (err) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
-            res.status(201).json({ message: 'Item ajouté avec succès', item: newItem });
+            res.status(201).json({ message: 'Liste ajoutée avec succès', item: newList });
         });
     });
 };
@@ -103,7 +103,7 @@ const deleteAllMyLists = (req, res) => {
         if (err) {
             return res.status(500).json({ message: err.message });
         }
-        const lists = lists.filter(list => list.idUser === idUser);
+        lists = lists.filter(list => list.idUser !== idUser);
         writeListsToFile(lists, (err) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
@@ -160,7 +160,7 @@ const getListById = (req, res) => {
 const addItemInList = (req, res) => {
     const idUser = req.user.id;
     const { id } = req.params;
-    let newItem = { ...req.item };
+    let newItem = req.body;
     newItem.giverId = null
     newItem.id = uuidv4()
     readListsFromFile((err, lists) => {
@@ -213,7 +213,14 @@ const removeItemFromList = (req, res) => {
 const updateItemFromList = (req, res) => {
     const idUser = req.user.id;
     const { listId, itemId } = req.params;
-    let updatedItem = { ...req.item };
+    let updatedItem = req.body;
+    if(updatedItem.price){
+        try {
+            updatedItem.price = parseFloat(updatedItem.price.toFixed(2))
+        } catch (error) {
+            return res.status(400).json({ message: 'Prix invalide' });
+        }
+    }
     delete updatedItem.giverId;
     delete updatedItem.id;
     readListsFromFile((err, lists) => {
