@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const wishListsFilePath = 'bdd/wishlists.json';
 
-const readItemsFromFile = (callback) => {
+const readListsFromFile = (callback) => {
     fs.readFile(wishListsFilePath, (err, data) => {
         if (err) {
             return callback(new Error('Erreur de lecture du fichier des lists.'));
@@ -15,9 +15,9 @@ const readItemsFromFile = (callback) => {
             callback(new Error('Erreur de parsing des données des lists.'));
         }
     });
-};
+}; 
 
-const writeItemsToFile = (lists, callback) => {
+const writeListsToFile = (lists, callback) => {
     fs.writeFile(wishListsFilePath, JSON.stringify(lists, null, 2), (err) => {
         if (err) {
             return callback(new Error('Erreur d\'écriture dans le fichier des lists.'));
@@ -27,23 +27,23 @@ const writeItemsToFile = (lists, callback) => {
 };
 
 const createList = (req, res) => {
-    const id = req.user.id;
+    const idUser = req.user.id;
     let newList = req.body ;
     newList.id = uuidv4()
-    newList.idUser = id
+    newList.idUser = idUser
     newList.items = []
     if (!newList.name) {
         return res.status(400).json({ message: 'Veuillez fournir un nom à la liste.' });
     }
 
-    readItemsFromFile((err, lists) => {
+    readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
         }
 
         lists.push(newItem);
 
-        writeItemsToFile(lists, (err) => {
+        writeListsToFile(lists, (err) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
@@ -52,8 +52,69 @@ const createList = (req, res) => {
     });
 };
 
+const updateListName = (req, res) => {
+    const idUser = req.user.id;
+    const { id } = req.params;
+    let newListName = req.body.name;
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const listIndex = lists.findIndex(list => list.id === id && list.idUser === idUser);
+        if(listIndex === -1){
+            return res.status(403).json({ message: 'Vous ne posséder pas cette liste' });
+        }
+        let targetList = lists[listIndex]
+        targetList.name = newListName
+        lists[listIndex] = targetList
+        writeListsToFile(lists, (err) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            res.status(200).json({ message: 'Liste modifiée avec succès', list: targetList });
+        });
+    });
+};
+
+const deleteList = (req, res) => {
+    const idUser = req.user.id;
+    const { id } = req.params;
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const listIndex = lists.findIndex(list => list.id === id && list.idUser === idUser);
+        if(listIndex === -1){
+            return res.status(403).json({ message: 'Vous ne posséder pas cette liste' });
+        }
+        lists.splice(listIndex, 1);
+        writeListsToFile(lists, (err) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            res.status(200).json({ message: 'Liste supprimée avec succès'});
+        });
+    });
+};
+
+const deleteAllMyLists = (req, res) => {
+    const idUser = req.user.id;
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const lists = lists.filter(list => list.idUser === idUser);
+        writeListsToFile(lists, (err) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            res.status(200).json({ message: 'Vos listes ont supprimées avec succès'});
+        });
+    });
+};
+
 const getLists = (req, res) => {
-    readItemsFromFile((err, lists) => {
+    readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
         }
@@ -61,77 +122,198 @@ const getLists = (req, res) => {
     });
 };
 
-const MyLists = (req, res) => {
-    readItemsFromFile((err, lists) => {
+const getMyLists = (req, res) => {
+    const idUser = req.user.id;
+    readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
         }
-        res.json(lists);
+        const myLists = lists.filter(list => list.idUser === idUser);
+        res.json(myLists);
     });
 };
 
-const getItemById = (req, res) => { 
-    const { id } = req.params;
 
-    readItemsFromFile((err, lists) => {
+const getListsByUser = (req, res) => {
+    const { idUser } = req.params;
+    readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
         }
-
-        const item = lists.find(i => i.id === id);
-        if (!item) {
-            return res.status(404).json({ message: 'Item non trouvé.' });
-        }
-
-        res.json(item);
+        const userLists = lists.filter(list => list.idUser === idUser);
+        res.json(userLists);
     });
 };
 
-const updateItem = (req, res) => {
+
+const getListById = (req, res) => {
     const { id } = req.params;
-    const updatedItem = req.body;
-    readItemsFromFile((err, lists) => {
+    readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
         }
+        const list = lists.find(list => list.id === id);
+        res.json(list);
+    });
+};
 
-        const itemIndex = lists.findIndex(i => i.id === id);
-        if (itemIndex === -1) {
-            return res.status(404).json({ message: 'Item non trouvé.' });
+const addItemInList = (req, res) => {
+    const idUser = req.user.id;
+    const { id } = req.params;
+    let newItem = { ...req.item };
+    newItem.giverId = null
+    newItem.id = uuidv4()
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
         }
-
-        lists[itemIndex] = { ...lists[itemIndex], ...updatedItem };
-
-        writeItemsToFile(lists, (err) => {
+        const listIndex = lists.findIndex(list => list.id === id && list.idUser === idUser);
+        if(listIndex === -1){
+            return res.status(403).json({ message: 'Vous ne posséder pas cette liste' });
+        }
+        let targetList = lists[listIndex]
+        targetList.items.push(newItem)
+        lists[listIndex] = targetList
+        writeListsToFile(lists, (err) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
-            res.json({ message: 'Item modifié avec succès', item: lists[itemIndex] });
+            res.status(200).json({ message: 'Item ajouté avec succes', newItem });
         });
     });
 };
 
-const deleteItem = (req, res) => {
-    const { id } = req.params;
-
-    readItemsFromFile((err, items) => {
+const removeItemFromList = (req, res) => {
+    const idUser = req.user.id;
+    const { listId, itemId } = req.params;
+    readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
         }
-
-        const newItems = items.filter(i => i.id !== id);
-
-        if (newItems.length === items.length) {
-            return res.status(404).json({ message: 'Item non trouvé.' });
+        const listIndex = lists.findIndex(list => list.id === listId && list.idUser === idUser);
+        if(listIndex === -1){
+            return res.status(403).json({ message: 'Vous ne posséder pas cette liste' });
         }
-
-        writeItemsToFile(newItems, (err) => {
+        let targetList = lists[listIndex]
+        const itemIndex = targetList.items.findIndex(item => item.id === itemId);
+        if(itemIndex === -1){
+            return res.status(404).json({ message: 'Cet item n\'est pas dans la liste' });
+        }
+        targetList.items.splice(itemIndex, 1);
+        lists[listIndex] = targetList
+        writeListsToFile(lists, (err) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
-            res.json({ message: 'Item supprimé avec succès' });
+            res.status(200).json({ message: 'Item supprimé avec succes' });
         });
     });
 };
 
-module.exports = { createItem, getItems, getItemById, updateItem, deleteItem };
+const updateItemFromList = (req, res) => {
+    const idUser = req.user.id;
+    const { listId, itemId } = req.params;
+    let updatedItem = { ...req.item };
+    delete updatedItem.giverId;
+    delete updatedItem.id;
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const listIndex = lists.findIndex(list => list.id === listId && list.idUser === idUser);
+        if(listIndex === -1){
+            return res.status(403).json({ message: 'Vous ne posséder pas cette liste' });
+        }
+        let targetList = lists[listIndex]
+        const itemIndex = targetList.items.findIndex(item => item.id === itemId);
+        if(itemIndex === -1){
+            return res.status(404).json({ message: 'Cet item n\'est pas dans la liste' });
+        }
+        
+
+        targetList.items[itemIndex] = { ... targetList.items[itemIndex], ...updatedItem };
+        lists[listIndex] = targetList
+        writeListsToFile(lists, (err) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            res.status(200).json({ message: 'Item modifié avec succes', updatedItem });
+        });
+    });
+};
+
+const reserveItem = (req, res) => {
+    const idUser = req.user.id;
+    const { listId, itemId } = req.params;
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const listIndex = lists.findIndex(list => list.id === listId);
+        if(listIndex === -1){
+            return res.status(404).json({ message: 'Cette liste n\'existe pas' });
+        }
+        let targetList = lists[listIndex]
+        const itemIndex = targetList.items.findIndex(item => item.id === itemId);
+        if(itemIndex === -1){
+            return res.status(404).json({ message: 'Cet item n\'est pas dans la liste' });
+        }
+        if(lists[listIndex].items[itemIndex].giverId !== null){
+            return res.status(400).json({ message: 'Quelqu\'un a déja réservé cet item' });
+        }
+        
+        lists[listIndex].items[itemIndex].giverId = idUser
+        writeListsToFile(lists, (err) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            res.status(200).json({ message: 'Item réservé avec succes'});
+        });
+    });
+};
+
+const freeItem = (req, res) => {
+    const idUser = req.user.id;
+    const { listId, itemId } = req.params;
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const listIndex = lists.findIndex(list => list.id === listId);
+        if(listIndex === -1){
+            return res.status(404).json({ message: 'Cette liste n\'existe pas' });
+        }
+        let targetList = lists[listIndex]
+        const itemIndex = targetList.items.findIndex(item => item.id === itemId);
+        if(itemIndex === -1){
+            return res.status(404).json({ message: 'Cet item n\'est pas dans la liste' });
+        }
+        if(lists[listIndex].items[itemIndex].giverId !== idUser){
+            return res.status(400).json({ message: 'Item reservé par quelqu\'un d\'autre' });
+        }
+        
+        lists[listIndex].items[itemIndex].giverId = null
+        writeListsToFile(lists, (err) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            res.status(200).json({ message: 'Item libéré avec succes'});
+        });
+    });
+};
+
+module.exports = {
+    createList,
+    updateListName,
+    deleteList,
+    deleteAllMyLists,
+    getLists,
+    getMyLists,
+    getListsByUser,
+    getListById,
+    addItemInList,
+    removeItemFromList,
+    updateItemFromList,
+    reserveItem,
+    freeItem
+};
