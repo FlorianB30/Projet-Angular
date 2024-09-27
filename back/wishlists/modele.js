@@ -3,6 +3,23 @@ const { v4: uuidv4 } = require('uuid');
 
 const wishListsFilePath = 'bdd/wishlists.json';
 
+
+const getMyFriendsIds = (id, callback) => {
+    fs.readFile('bdd/users.json', (err, data) => {
+        if (err) {
+            return callback(new Error('Erreur de lecture du fichier des users.'));
+        }
+        try {
+            const users = JSON.parse(data);
+            const me = users.find(user => user.id === id);
+            const myFriends = me.friends
+            callback(null, myFriends);
+        } catch (error) {
+            callback(new Error('Erreur de parsing des données des users.'));
+        }
+    });
+}; 
+
 const readListsFromFile = (callback) => {
     fs.readFile(wishListsFilePath, (err, data) => {
         if (err) {
@@ -132,6 +149,28 @@ const getMyLists = (req, res) => {
         res.json(myLists);
     });
 };
+
+const getMyFriendsLists = (req, res) => {
+    const idUser = req.user.id;
+
+    getMyFriendsIds(idUser, (err, myFriends) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        readListsFromFile((err, lists) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            if(!myFriends){
+                res.json([]);
+            }
+            const myFriendsLists = lists.filter(list => myFriends.includes(list.idUser));
+            res.json(myFriendsLists);
+        });
+    });
+
+};
+
 
 
 const getListsByUser = (req, res) => {
@@ -322,5 +361,6 @@ module.exports = {
     removeItemFromList,
     updateItemFromList,
     reserveItem,
-    freeItem
+    freeItem,
+    getMyFriendsLists
 };

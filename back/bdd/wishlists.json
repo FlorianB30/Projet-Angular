@@ -73,5 +73,41 @@
         "giverId": null
       }
     ]
+  },
+  {
+    "name": "liste_newuser_1",
+    "id": "8356cb3b-723b-477b-84c4-42098faaaa65",
+    "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
+    "items": []
+  },
+  {
+    "name": "liste_newuser_2",
+    "id": "03e1fc74-92d6-4b3e-87b5-fd8979cd8671",
+    "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
+    "items": []
+  },
+  {
+    "name": "liste_newuser_3",
+    "id": "27b9b2fd-03b6-43ff-8dca-4ece9f5e61af",
+    "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
+    "items": []
+  },
+  {
+    "name": "liste_newuser_4",
+    "id": "7d49131d-433c-4edd-8953-2471466e79fe",
+    "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
+    "items": []
+  },
+  {
+    "name": "liste_newuser_5",
+    "id": "e91abe76-ca29-45e6-a601-c5148b586c0d",
+    "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
+    "items": []
+  },
+  {
+    "name": "liste_newuser_6",
+    "id": "0efdfed0-ddfd-43b8-8ac0-b363427ea342",
+    "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
+    "items": []
   }
 ]
