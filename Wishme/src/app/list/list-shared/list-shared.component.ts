@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-shared.component.scss']
 })
 export class ListSharedComponent {
-
+  sharedLists!: any[]
 }

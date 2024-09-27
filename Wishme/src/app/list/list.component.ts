@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-
+  lists!: any[]
 }

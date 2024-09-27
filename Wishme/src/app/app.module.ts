@@ -18,17 +18,10 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { ItemComponent } from './catalogue/item/item.component';
 import { AddItemComponent } from './catalogue/add-item/add-item.component';
 import { EditItemComponent } from './catalogue/edit-item/edit-item.component';
-import { AccountComponent } from './user/account/account.component';
-import { InfoAccountComponent } from './user/account/info-account/info-account.component';
-import { EditAccountComponent } from './user/account/edit-account/edit-account.component';
-import { DeleteAccountComponent } from './user/account/delete-account/delete-account.component';
-import { ConfirmComponent } from './shared/popup/confirm/confirm.component';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
-}import { ListComponent } from './list/list.component';
-import { ListItemComponent } from './list/list-item/list-item.component';
-import { ListPageComponent } from './list/list-page/list-page.component';
-import { ListSharedComponent } from './list/list-shared/list-shared.component';
+}
 
 @NgModule({
   declarations: [

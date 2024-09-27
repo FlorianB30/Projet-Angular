@@ -1,4 +1,6 @@
-<h3>Nom de liste</h3>
-<p>Nombre d'items : X</p>
-<p>Cette liste est partagée</p>
-<button>Ouvrir la liste</button>
+<div *ngFor="let list of lists"></div>
+    <h3>{{list.name}}</h3>
+    <p>{{list.items.length}} item(s)</p>
+    <p *ngIf="list.shared">Cette liste est partagée</p>
+    <button>Ouvrir la liste</button>
+</div>
