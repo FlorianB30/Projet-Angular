@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
@@ -18,6 +17,10 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { ItemComponent } from './catalogue/item/item.component';
 import { AddItemComponent } from './catalogue/add-item/add-item.component';
 import { EditItemComponent } from './catalogue/edit-item/edit-item.component';
+import { CommonModule } from '@angular/common';
+import { ListComponent } from './list/list.component';
+import { ListItemComponent } from './list/list-item/list-item.component';
+import { ListPageComponent } from './list/list-page/list-page.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,16 +39,19 @@ export function HttpLoaderFactory(http: HttpClient) {
     CatalogueComponent,
     ItemComponent,
     AddItemComponent,
-    EditItemComponent
+    EditItemComponent,
+    ListComponent,
+    ListItemComponent,
+    ListPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule,
     ReactiveFormsModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

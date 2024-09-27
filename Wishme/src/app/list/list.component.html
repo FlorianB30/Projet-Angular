@@ -1,6 +1,6 @@
-<div *ngFor="let list of lists"></div>
+<div *ngFor="let list of lists$ | async">
     <h3>{{list.name}}</h3>
     <p>{{list.items.length}} item(s)</p>
     <p *ngIf="list.shared">Cette liste est partagée</p>
-    <button>Ouvrir la liste</button>
+    <button >Ouvrir la liste</button>
 </div>

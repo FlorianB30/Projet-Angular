@@ -8,6 +8,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './interface/home/home.component';
 import { AboutComponent } from './interface/about/about.component';
 import { AccountComponent } from './user/account/account.component';
+import { ListComponent } from './list/list.component';
+import { ListSharedComponent } from './list/list-shared/list-shared.component';
+import { ListPageComponent } from './list/list-page/list-page.component';
 
 const routes: Routes = [
   {
@@ -26,7 +29,19 @@ const routes: Routes = [
     path: "register",
     component: RegisterComponent
   },
-   {
+  {
+    path: 'lists',
+    component: ListComponent
+  },
+  {
+    path: 'lists/:id',
+    component: ListPageComponent
+  },
+  {
+    path: 'sharedlists',
+    component: ListSharedComponent
+  },
+  {
     path: 'catalogue',
     component: CatalogueComponent
   },

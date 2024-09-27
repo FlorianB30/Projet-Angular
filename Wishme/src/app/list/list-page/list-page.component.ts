@@ -8,4 +8,15 @@ import { Component, Input } from '@angular/core';
 export class ListPageComponent {
   @Input() sharedList: boolean = false;
   listItems!: any[];
+
+  constructor() {
+    this.listItems = [
+      {
+        name: 'item1',
+        id: "1",
+        description: "description",
+        price: 1
+      }
+    ]
+  }
 }
