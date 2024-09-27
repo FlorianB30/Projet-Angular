@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class ListService {
   private listsUrl = 'http://localhost:3000/lists'
+  private sharedListsUrl = 'http://localhost:3000/sharedlists'
   private selectedListsSource = new BehaviorSubject<any | null>(null);
   selectedLists$ = this.selectedListsSource.asObservable();
   private listsSource = new BehaviorSubject<any>([]);
@@ -17,6 +18,14 @@ export class ListService {
 
   getListByUser(): Observable<any> {
     return this.http.get<any>(`${this.listsUrl}/null`, {
+      headers: {
+        Authorization: `Bearer ${this.authService.getToken()}`
+      }
+    });
+  }
+
+  getSharedLists(): Observable<any> {
+    return this.http.get<any>(`${this.sharedListsUrl}`, {
       headers: {
         Authorization: `Bearer ${this.authService.getToken()}`
       }

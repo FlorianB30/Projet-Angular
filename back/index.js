@@ -26,6 +26,7 @@ app.delete('/users', authenticateToken, deleteUser);
 
 app.post('/list', authenticateToken, createList);
 app.get('/list/:id', getListById);
+app.get('/sharedlist', getSharedLists);
 app.post('/list/:id', authenticateToken, addItemInList);
 app.delete('/list/:id', authenticateToken, deleteList);
 app.put('/list/:id', authenticateToken, updateListName);
