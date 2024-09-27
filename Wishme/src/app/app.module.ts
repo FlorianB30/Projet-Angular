@@ -25,7 +25,11 @@ import { DeleteAccountComponent } from './user/account/delete-account/delete-acc
 import { ConfirmComponent } from './shared/popup/confirm/confirm.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
-}
+}import { ListComponent } from './list/list.component';
+import { ListItemComponent } from './list/list-item/list-item.component';
+import { ListPageComponent } from './list/list-page/list-page.component';
+import { ListSharedComponent } from './list/list-shared/list-shared.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,12 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CatalogueComponent,
     ItemComponent,
     AddItemComponent,
-    EditItemComponent,
-    AccountComponent,
-    InfoAccountComponent,
-    EditAccountComponent,
-    DeleteAccountComponent,
-    ConfirmComponent
+    EditItemComponent
   ],
   imports: [
     BrowserModule,
