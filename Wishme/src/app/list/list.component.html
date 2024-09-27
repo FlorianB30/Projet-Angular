@@ -1,10 +1,10 @@
-<div>
+<div [formGroup]="formList">
     <h3>Nouvelle liste</h3>
     <label>Nom de la liste</label>
-    <input type="text"/> 
+    <input type="text" formControlName="name"/> 
     <label>Partager ma liste : </label>
-    <input type="checkbox"/>
-    <button>Créer ma liste</button>
+    <input type="checkbox" formControlName="shared"/>
+    <button (click)="createList()">Créer ma liste</button>
 </div>
 
 <div *ngFor="let list of lists$ | async">
