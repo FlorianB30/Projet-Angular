@@ -69,10 +69,11 @@ const createList = (req, res) => {
     });
 };
 
-const updateListName = (req, res) => {
+const updateList = (req, res) => {
     const idUser = req.user.id;
     const { id } = req.params;
     let newListName = req.body.name;
+    let shared = req.body.shared;
     readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
@@ -83,6 +84,7 @@ const updateListName = (req, res) => {
         }
         let targetList = lists[listIndex]
         targetList.name = newListName
+        targetList.shared = shared
         lists[listIndex] = targetList
         writeListsToFile(lists, (err) => {
             if (err) {
@@ -350,7 +352,7 @@ const freeItem = (req, res) => {
 
 module.exports = {
     createList,
-    updateListName,
+    updateList,
     deleteList,
     deleteAllMyLists,
     getLists,
