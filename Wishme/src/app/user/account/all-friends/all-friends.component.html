@@ -1,0 +1,27 @@
+<section class="overlay">
+    <div class="modal-content">
+      <button class="close-button" (click)="close()">✖</button>
+      <h2>Ajouter un ami</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let friend of friends">
+              <td>{{ friend.name }}</td>
+              <td>{{ friend.email }}</td>
+              <td>
+                <button (click)="emitDeleteFriend(friend.email)">Supprimer l'ami</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+<h2>Liste des amis</h2>

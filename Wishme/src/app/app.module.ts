@@ -28,6 +28,8 @@ import { DeleteAccountComponent } from './user/account/delete-account/delete-acc
 import { ConfirmComponent } from './shared/popup/confirm/confirm.component';
 import { AccountComponent } from './user/account/account.component';
 import { ListFriendsComponent } from './list/list-friends/list-friends.component';
+import { FriendsComponent } from './user/account/friends/friends.component';
+import { AllFriendsComponent } from './user/account/all-friends/all-friends.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -56,7 +58,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     DeleteAccountComponent,
     AccountComponent,
     ConfirmComponent,
-    ListFriendsComponent
+    ListFriendsComponent,
+    FriendsComponent,
+    AllFriendsComponent
 
   ],
   imports: [

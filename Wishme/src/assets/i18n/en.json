@@ -77,7 +77,8 @@
         "title": "Modify your informations",
         "edit": "Confirm modifications",
         "name": "Name",
-        "email": "Email"
+        "email": "Email",
+        "addFriend": "Add friend"
     },
     "infoAccount":{
         "title": "My informations",

@@ -3,8 +3,11 @@
   <p><strong>{{ "infoAccount.name" | translate }} :</strong> {{ user.name }}</p>
   <p><strong>{{ "infoAccount.email" | translate }} :</strong> {{ user.email }}</p>
   <button class="button-edit" (click)="isEditing=true;">{{ "infoAccount.edit" | translate }}</button>
-
+  <button class="button-edit" (click)="addFriend=true;">{{ "infoAccount.addFriend" | translate }}</button>
+  <button class="button-edit" (click)="myFriends=true;">{{ "infoAccount.myFriends" | translate }}</button>
   <button class="button-delete" (click)="isDeleting=true;">{{ "infoAccount.delete" | translate }}</button>
   <app-delete-account *ngIf="isDeleting" (stopDeleting)="isDeleting=false"></app-delete-account>
   <app-edit-account *ngIf="isEditing" (userUpdated)="isEditing=false" [user]="user" ></app-edit-account>
+  <app-friends *ngIf="addFriend" (closePopUp)="addFriend=false"  (addFriend)="handleAddFriend($event)"></app-friends>
+  <app-all-friends *ngIf="myFriends" (closePopUp)="myFriends=false"  (deleteFriend)="handleDeleteFriend($event)" [friends]="friends"></app-all-friends>
 </div>

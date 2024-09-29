@@ -13,5 +13,8 @@
       </div>
       <button type="submit">{{ "editAccount.edit" | translate }}</button>
     </form>
+    <p *ngIf="editUserForm.invalid && (editUserForm.touched || editUserForm.dirty)" class="register_error">
+      {{ getErrorLabel }}
+      </p>
   </div>
 </section>

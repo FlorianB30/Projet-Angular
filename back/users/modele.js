@@ -32,7 +32,7 @@ const updateUser = (req, res) => {
 
 const addFriend = (req, res) => {
     const id = req.user.id;
-    let friendId = req.body.friendId;
+    let friendEmail = req.body.email;
     fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
@@ -43,10 +43,11 @@ const addFriend = (req, res) => {
         if (userIndex === -1) {
             return res.status(404).json({ message: 'Utilisateur non trouvé.' });
         }
-        const friendIndex = users.findIndex(user => user.id === friendId);
+        const friendIndex = users.findIndex(user => user.email === friendEmail);
         if (friendIndex === -1) {
             return res.status(404).json({ message: 'Ami non trouvé.' });
         }
+        const friendId = users[friendIndex].id
         let user = users[userIndex];
         if (!user.friends) {
             user.friends = [];
@@ -70,7 +71,7 @@ const addFriend = (req, res) => {
 
 const removeFriend = (req, res) => {
     const id = req.user.id;
-    let friendId = req.body.friendId;
+    let friendEmail = req.body.email;
     fs.readFile(usersFilePath, (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Erreur de lecture du fichier' });
@@ -81,10 +82,11 @@ const removeFriend = (req, res) => {
         if (userIndex === -1) {
             return res.status(404).json({ message: 'Utilisateur non trouvé.' });
         }
-        const friendIndex = users.findIndex(user => user.id === friendId);
+        const friendIndex = users.findIndex(user => user.email === friendEmail);
         if (friendIndex === -1) {
             return res.status(404).json({ message: 'Ami non trouvé.' });
         }
+        const friendId = users[friendIndex].id
         let user = users[userIndex];
         if (!user.friends) {
             return res.status(400).json({ message: "Vous n'avez pas d'ami." });
@@ -194,7 +196,8 @@ const getFriends = (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé.' });
         }
-        const friends = user.friends
+        const friendsIds = user.friends
+        const friends = users.filter(user => friendsIds.includes(user.id));
         res.json(friends);
     });
 };

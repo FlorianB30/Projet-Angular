@@ -1,0 +1,17 @@
+<section class="overlay">
+    <div class="modal-content">
+      <button class="close-button" (click)="close()">✖</button>
+      <h2>Ajouter un ami</h2>
+      <form [formGroup]="friendsUserForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email">Email:</label>
+          <input id="email" formControlName="email">
+        </div>
+        <button type="submit">Ajouter</button>
+      </form>
+      <p *ngIf="friendsUserForm.invalid && (friendsUserForm.touched || friendsUserForm.dirty)" class="register_error">
+        {{ getErrorLabel }}
+        </p>
+    </div>
+
+  </section>
