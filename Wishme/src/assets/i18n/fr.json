@@ -8,7 +8,10 @@
         "catalog": "Catalogue",
         "home": "Accueil",
         "contact": "Nous contacter",
-        "account": "Mon compte"
+        "account": "Mon compte",
+        "myLists": "Mes listes",
+        "sharedLists": "Listes publiques",
+        "friendsLists": "Listes de mes amis"
     },
     "login":{
         "password": "Mot de passe",

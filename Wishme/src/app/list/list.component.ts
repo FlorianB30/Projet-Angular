@@ -35,4 +35,9 @@ export class ListComponent {
       this.lists$ = this.listService.getMyLists();
     });
   }
+  deleteList(listId: string){
+    this.listService.deleteList(listId).subscribe(() => {
+      this.lists$ = this.listService.getMyLists();
+    });
+  }
 }

@@ -1,3 +1,12 @@
-<app-list-item *ngFor="let item of list.items" [item]="item" (idItemToDelete)="handleDelete($event)"></app-list-item>
-
-<button (click)="openCatalogue()">Ouvrir le catalogue</button>
+<div class="app-list">
+    <app-list-item *ngFor="let item of list.items"
+        [item]="item"
+        [myList]="myList"
+        [currentUser]="currentUser"
+        (idItemToDelete)="handleDelete($event)"
+        (idItemToGive)="handleGive($event)"
+        (idItemToUngive)="handleUngive($event)">
+    </app-list-item>
+    <p *ngIf="list.items.length == 0" class="empty-message">Cette liste est vide</p>
+    <button *ngIf="myList" class="catalogue-button" (click)="openCatalogue()">Ouvrir le catalogue</button>
+</div>
