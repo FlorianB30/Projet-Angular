@@ -141,16 +141,6 @@ const getLists = (req, res) => {
     });
 };
 
-const getSharedLists = (req, res) => {
-    readListsFromFile((err, lists) => {
-        if (err) {
-            return res.status(500).json({ message: err.message });
-        }
-        const sharedLists = lists.filter(list => list.shared === true);
-        res.json(sharedLists);
-    });
-};
-
 const getMyLists = (req, res) => {
     const idUser = req.user.id;
     readListsFromFile((err, lists) => {
@@ -183,8 +173,6 @@ const getMyFriendsLists = (req, res) => {
 
 };
 
-
-
 const getListsByUser = (req, res) => {
     const { idUser } = req.params;
     readListsFromFile((err, lists) => {
@@ -195,7 +183,6 @@ const getListsByUser = (req, res) => {
         res.json(userLists);
     });
 };
-
 
 const getListById = (req, res) => {
     const { id } = req.params;
