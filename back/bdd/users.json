@@ -18,7 +18,9 @@
     "name": "jeanjean",
     "email": "jeanjean@jean.com",
     "password": "Azerty@123",
-    "friends": []
+    "friends": [
+      "f360dcca-8002-4723-82c5-b8dd355a82fe"
+    ]
   },
   {
     "id": "638cda8c-ee37-46d0-9772-67fb71600161",
@@ -62,10 +64,7 @@
     "password": "Azerty@123",
     "friends": [
       "1b138c33-dbce-4462-931e-53b697b9df4c",
-      "testestestest",
-      "53c4e996-548a-49df-aade-f647940f914f",
-      "03e1fc74-92d6-4b3e-87b5-fd8979cd8671",
-      "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d"
+      "03e1fc74-92d6-4b3e-87b5-fd8979cd8671"
     ]
   },
   {
@@ -76,7 +75,7 @@
     "friends": []
   },
   {
-    "id": "null",
+    "id": "floflolfolfolfo",
     "name": "Flo",
     "email": "flo@gmail.com",
     "password": "12345678",

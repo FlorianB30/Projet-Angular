@@ -1,3 +1,8 @@
 <h2>{{ "account.title" | translate }}</h2>
 
-<app-info-account *ngIf="currentUser" [user]="currentUser"></app-info-account>
+<app-info-account *ngIf="currentUser"
+[user]="currentUser"
+[friends]="friends"
+(addAFriend)="handleAddFriend($event)"
+(deleteAFriend)="handleDeleteFriend($event)"
+></app-info-account>

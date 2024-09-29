@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/shared/interfaces';
@@ -25,10 +25,13 @@ export class EditAccountComponent {
   ) { 
     this.editUserForm = this.fb.group({
       name: [''],
-      email: ['']
+      email: new FormControl('', [Validators.email]),
     });
   }
-
+  get getErrorLabel(): string {
+    if (!!this.editUserForm.controls?.['email']?.errors?.['email']) return 'Email doit être valide.';
+    return 'Un problème est survenu';
+  }
   onSubmit() {
     if (this.editUserForm.valid && this.user) {
       const formValues = this.editUserForm.value;

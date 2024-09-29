@@ -14,7 +14,9 @@ export class UserService {
   selectedUser$ = this.selectedUserSource.asObservable();
   private usersSource = new BehaviorSubject<Users>([]);
   users$ = this.usersSource.asObservable();
-  
+  private friendsSource = new BehaviorSubject<Users>([]);
+  friends$ = this.friendsSource.asObservable();
+
   constructor(
     private http: HttpClient,
     private authService: AuthService
@@ -56,6 +58,24 @@ export class UserService {
     );
   }
 
+  getFriends(): void {
+    const token = this.authService.getToken();
+    const friends = this.http.get<Users>(
+      `${this.usersUrl}/friends`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    friends.subscribe(
+      (data) => {
+        this.friendsSource.next(data);
+      },
+      error => console.error('Erreur lors de la recuperation des items', error)
+    );
+  }
+
   updateUser(user: User): void {
     const token = this.authService.getToken();
     const response =this.http.put(
@@ -75,6 +95,49 @@ export class UserService {
       error => console.error('Erreur lors de la recuperation des items', error)
     );
   }
+
+  addFriend(email: string): void {
+    const token = this.authService.getToken();
+    const response =this.http.put(
+      `${this.usersUrl}/friend/add`,
+      {email: email},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        observe: 'response'
+      }
+    )
+    response.subscribe(
+      (data) => {
+        this. getFriends();
+        console.log(data.status)
+      },
+      error => console.error('Erreur lors de l\'ajout d\'un ami', error)
+    );
+  }
+
+  removeFriend(email: string): void {
+    const token = this.authService.getToken();
+    const response =this.http.put(
+      `${this.usersUrl}/friend/remove`,
+      {email: email},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        observe: 'response'
+      }
+    )
+    response.subscribe(
+      (data) => {
+        this. getFriends();
+        console.log(data.status)
+      },
+      error => console.error('Erreur lors de la suppression d\'un ami', error)
+    );
+  }
+
 
   deleteUser(): void {
     const token = this.authService.getToken();

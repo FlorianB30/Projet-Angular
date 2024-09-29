@@ -84,6 +84,7 @@
         "edit": "Modifier mes informations",
         "delete": "Supprimer mon compte",
         "name": "Nom",
-        "email": "Email"
+        "email": "Email",
+        "addFriend": "Ajouter un ami"
     }
 }
