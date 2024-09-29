@@ -3,55 +3,64 @@
     "name": "liste_1",
     "id": "9f6ef35f-31ca-4cd9-8e14-19d0f18b9dfb",
     "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_2",
     "id": "3c72a975-0144-4353-8cee-9433e18991ca",
     "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
-    "items": []
+    "items": [],
+    "shared": false
   },
   {
     "name": "liste_3",
     "id": "0232d28b-c0d9-484e-93eb-8cbe40bf587e",
     "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_4",
     "id": "765f3aae-e189-43c0-87a1-4e0979bd8e34",
     "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_toto_1",
     "id": "e1b82487-b9af-4748-807f-02dedf921cf5",
     "idUser": "53c4e996-548a-49df-aade-f647940f914f",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_toto_2",
     "id": "2af68a95-b911-441c-bb00-dbb54e8e7f88",
     "idUser": "53c4e996-548a-49df-aade-f647940f914f",
-    "items": []
+    "items": [],
+    "shared": false
   },
   {
     "name": "liste_toto_3",
     "id": "2d9329a2-bf6e-48d1-b468-0886fc2d5bb4",
     "idUser": "53c4e996-548a-49df-aade-f647940f914f",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_toto_4",
     "id": "4e3b795d-cc00-41dc-ab8d-0aa6207806a2",
     "idUser": "53c4e996-548a-49df-aade-f647940f914f",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_toto_5",
     "id": "6d04eb4f-8340-4ca0-8a01-d36a1e594a12",
     "idUser": "53c4e996-548a-49df-aade-f647940f914f",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "listToTest",
@@ -72,42 +81,49 @@
         "price": 30.99,
         "giverId": null
       }
-    ]
+    ],
+    "shared": true
   },
   {
-    "name": "liste_newuser_1",
+    "name": "listToTest",
     "id": "8356cb3b-723b-477b-84c4-42098faaaa65",
     "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_newuser_2",
     "id": "03e1fc74-92d6-4b3e-87b5-fd8979cd8671",
     "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
-    "items": []
+    "items": [],
+    "shared": false
   },
   {
     "name": "liste_newuser_3",
     "id": "27b9b2fd-03b6-43ff-8dca-4ece9f5e61af",
     "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_newuser_4",
     "id": "7d49131d-433c-4edd-8953-2471466e79fe",
     "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
-    "items": []
+    "items": [],
+    "shared": false
   },
   {
     "name": "liste_newuser_5",
     "id": "e91abe76-ca29-45e6-a601-c5148b586c0d",
     "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
-    "items": []
+    "items": [],
+    "shared": true
   },
   {
     "name": "liste_newuser_6",
     "id": "0efdfed0-ddfd-43b8-8ac0-b363427ea342",
     "idUser": "7fc1bef9-91e6-4ce2-baf8-5904df8ee05d",
-    "items": []
+    "items": [],
+    "shared": false
   }
 ]
