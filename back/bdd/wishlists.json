@@ -65,7 +65,8 @@
   {
     "name": "listToTest",
     "id": "07839565-a277-42cd-bb69-dce70a908d96",
-    "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
+    "idUser": "null",
+    "shared": false,
     "items": [
       {
         "id": "3b93e2b6-9743-4bff-ba84-23b2b50776bf",

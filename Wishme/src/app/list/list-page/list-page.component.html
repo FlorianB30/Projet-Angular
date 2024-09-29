@@ -1,5 +1,5 @@
-<p>Cette liste est partagée</p>
+<p *ngIf="sharedList">Cette liste est partagée</p>
 
-<p>boucle sur items list</p>
+<app-list-item *ngFor="let item of listItems" [item]="item"></app-list-item>
 
-<p>Ouvrir le catalogue (dans le catalogue add item to list)</p>
+<button>Ouvrir le catalogue (dans le catalogue add item to list)</button>

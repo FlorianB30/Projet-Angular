@@ -74,5 +74,12 @@
     "email": "Azerty@123.com",
     "password": "Azerty@123",
     "friends": []
+  },
+  {
+    "id": "null",
+    "name": "Flo",
+    "email": "flo@gmail.com",
+    "password": "12345678",
+    "friends": []
   }
 ]

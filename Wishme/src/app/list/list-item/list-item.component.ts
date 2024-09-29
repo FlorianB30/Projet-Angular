@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-list-item',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-item.component.scss']
 })
 export class ListItemComponent {
+  @Input() item!: any;
+  @Output() idItemToDelete = new EventEmitter<number>;
 
+  deleteItemFromList(): void {
+    this.idItemToDelete.emit(this.item.id)
+  }
 }

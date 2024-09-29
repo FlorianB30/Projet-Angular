@@ -1,4 +1,16 @@
-<h3>Nom de liste</h3>
-<p>Nombre d'items : X</p>
-<p>Cette liste est partagée</p>
-<button>Ouvrir la liste</button>
+<div [formGroup]="formList">
+    <h3>Nouvelle liste</h3>
+    <label>Nom de la liste</label>
+    <input type="text" formControlName="name"/> 
+    <label>Partager ma liste : </label>
+    <input type="checkbox" formControlName="shared"/>
+    <button (click)="createList()">Créer ma liste</button>
+</div>
+
+<div *ngFor="let list of lists$ | async">
+    <h3>{{list.name}}</h3>
+    <p>{{list.items.length}} item(s)</p>
+    <p *ngIf="list.shared">Cette liste est partagée</p>
+    <a href="{{'lists/'+list.id}}">Voir la liste</a>
+</div>
+

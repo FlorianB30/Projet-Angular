@@ -12,7 +12,7 @@ export class CatalogueComponent implements OnInit {
   catalogue: Items = [];
   isEditing = false;
   isAddding = false;
-
+  forList: boolean = false;
   currentPage: number = 1;
   itemsPerPage: number = 10;
 
