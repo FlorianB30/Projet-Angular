@@ -3,6 +3,23 @@ const { v4: uuidv4 } = require('uuid');
 
 const wishListsFilePath = 'bdd/wishlists.json';
 
+
+const getMyFriendsIds = (id, callback) => {
+    fs.readFile('bdd/users.json', (err, data) => {
+        if (err) {
+            return callback(new Error('Erreur de lecture du fichier des users.'));
+        }
+        try {
+            const users = JSON.parse(data);
+            const me = users.find(user => user.id === id);
+            const myFriends = me.friends
+            callback(null, myFriends);
+        } catch (error) {
+            callback(new Error('Erreur de parsing des données des users.'));
+        }
+    });
+}; 
+
 const readListsFromFile = (callback) => {
     fs.readFile(wishListsFilePath, (err, data) => {
         if (err) {
@@ -52,10 +69,11 @@ const createList = (req, res) => {
     });
 };
 
-const updateListName = (req, res) => {
+const updateList = (req, res) => {
     const idUser = req.user.id;
     const { id } = req.params;
     let newListName = req.body.name;
+    let shared = req.body.shared;
     readListsFromFile((err, lists) => {
         if (err) {
             return res.status(500).json({ message: err.message });
@@ -66,6 +84,7 @@ const updateListName = (req, res) => {
         }
         let targetList = lists[listIndex]
         targetList.name = newListName
+        targetList.shared = shared
         lists[listIndex] = targetList
         writeListsToFile(lists, (err) => {
             if (err) {
@@ -122,6 +141,16 @@ const getLists = (req, res) => {
     });
 };
 
+const getSharedLists = (req, res) => {
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const sharedLists = lists.filter(list => list.shared === true);
+        res.json(sharedLists);
+    });
+};
+
 const getMyLists = (req, res) => {
     const idUser = req.user.id;
     readListsFromFile((err, lists) => {
@@ -132,6 +161,28 @@ const getMyLists = (req, res) => {
         res.json(myLists);
     });
 };
+
+const getMyFriendsLists = (req, res) => {
+    const idUser = req.user.id;
+
+    getMyFriendsIds(idUser, (err, myFriends) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        readListsFromFile((err, lists) => {
+            if (err) {
+                return res.status(500).json({ message: err.message });
+            }
+            if(!myFriends){
+                res.json([]);
+            }
+            const myFriendsLists = lists.filter(list => myFriends.includes(list.idUser));
+            res.json(myFriendsLists);
+        });
+    });
+
+};
+
 
 
 const getListsByUser = (req, res) => {
@@ -321,7 +372,7 @@ const freeItem = (req, res) => {
 
 module.exports = {
     createList,
-    updateListName,
+    updateList,
     deleteList,
     deleteAllMyLists,
     getLists,
@@ -333,5 +384,7 @@ module.exports = {
     removeItemFromList,
     updateItemFromList,
     reserveItem,
-    freeItem
+    freeItem,
+    getMyFriendsLists,
+    getSharedLists
 };
