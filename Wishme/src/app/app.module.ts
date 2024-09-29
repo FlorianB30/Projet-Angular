@@ -27,6 +27,7 @@ import { EditAccountComponent } from './user/account/edit-account/edit-account.c
 import { DeleteAccountComponent } from './user/account/delete-account/delete-account.component';
 import { ConfirmComponent } from './shared/popup/confirm/confirm.component';
 import { AccountComponent } from './user/account/account.component';
+import { ListFriendsComponent } from './list/list-friends/list-friends.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,7 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditAccountComponent,
     DeleteAccountComponent,
     AccountComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    ListFriendsComponent
 
   ],
   imports: [

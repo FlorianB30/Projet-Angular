@@ -15,5 +15,6 @@
     <p *ngIf="!list.shared">Cette liste est privée</p>
     <button *ngIf="!list.shared" (click)="changeListStatus(true, list.id)">Passer en pubic</button>
     <a href="{{'list/'+list.id}}">Voir la liste</a>
+    <button (click)="deleteList(list.id)" >supprimer la liste</button>
 </div>
 

@@ -11,10 +11,17 @@
         "giverId": null
       },
       {
-        "id": "35c963c0-be85-4516-88c6-fdcbce96bd03",
-        "name": "Product 10",
-        "description": "Description for Product 10",
-        "price": 15.99,
+        "id": "09e1bf25-678b-4012-a9a1-178f5d17302b",
+        "name": "Product 6",
+        "description": "dexcription of product 6",
+        "price": 54.46,
+        "giverId": null
+      },
+      {
+        "id": "c8e9f500-5dbf-4adc-b2ad-a2f61e42be0a",
+        "name": "Product 5",
+        "description": "Description for Product 5",
+        "price": 30.99,
         "giverId": null
       }
     ],
@@ -59,7 +66,22 @@
     "name": "liste_toto_3",
     "id": "2d9329a2-bf6e-48d1-b468-0886fc2d5bb4",
     "idUser": "53c4e996-548a-49df-aade-f647940f914f",
-    "items": [],
+    "items": [
+      {
+        "id": "5f38673e-4541-48db-833e-927f4f475392",
+        "name": "Product to delete",
+        "description": "Description for Product 5",
+        "price": 30.99,
+        "giverId": null
+      },
+      {
+        "id": "09e1bf25-678b-4012-a9a1-178f5d17302b",
+        "name": "Product 6",
+        "description": "dexcription of product 6",
+        "price": 54.46,
+        "giverId": "1b138c33-dbce-4462-931e-53b697b9df4c"
+      }
+    ],
     "shared": true
   },
   {
@@ -167,20 +189,6 @@
   {
     "name": "test",
     "id": "c4d8b5d8-8ea5-44da-b860-4b781e1d2f80",
-    "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
-    "shared": false,
-    "items": []
-  },
-  {
-    "name": "test2",
-    "id": "6eb4b001-d179-4ee8-8a6d-c1b0aeba4a0d",
-    "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
-    "shared": false,
-    "items": []
-  },
-  {
-    "name": "testtest2",
-    "id": "7b0d1711-3911-4873-9db7-37c005e70397",
     "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
     "shared": false,
     "items": []

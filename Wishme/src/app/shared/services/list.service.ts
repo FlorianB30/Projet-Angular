@@ -22,22 +22,24 @@ export class ListService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   
-  getListById(idList: string): void {
-    const request = this.http.get<List>(`${this.listUrl}/${idList}`, {
+  getListById(idList: string): Observable<List> {
+    return this.http.get<List>(`${this.listUrl}/${idList}`, {
       headers: {
         Authorization: `Bearer ${this.authService.getToken()}`
       }
     });
-    request.subscribe(
-      (data) => {
-        this.selecteListSource.next(data);
-      },
-      error => console.error('Erreur lors de la recuperation de la liste par id', error)
-    );
   }
 
   getMyLists(): Observable<Lists> {
     return this.http.get<Lists>(`${this.listsUrl}/my`, {
+      headers: {
+        Authorization: `Bearer ${this.authService.getToken()}`
+      }
+    });
+  }
+
+  getMyFriendsLists(): Observable<Lists> {
+    return this.http.get<Lists>(`${this.listsUrl}/friends`, {
       headers: {
         Authorization: `Bearer ${this.authService.getToken()}`
       }
@@ -67,6 +69,18 @@ export class ListService {
     );
   }
 
+  deleteList(idList: string): Observable<any>  {
+    const url = `${this.listUrl}/${idList}`
+    return this.http.delete(
+      url,
+      {
+        headers: {
+          Authorization: `Bearer ${this.authService.getToken()}`
+        }
+      }
+    )
+  }
+
   addItemToList(item: Item,listId: string): void {
     const url = `${this.listUrl}/${listId}`
     this.http.post(
@@ -94,6 +108,32 @@ export class ListService {
       {
         "shared": status
       },
+      {
+        headers: {
+          Authorization: `Bearer ${this.authService.getToken()}`
+        }
+      }
+    );
+  }
+
+  giveItem(idList: string, idItem: string): Observable<any> {
+    const url = `${this.listUrl}/reserve/${idList}/${idItem}`
+    return this.http.put(
+      url,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${this.authService.getToken()}`
+        }
+      }
+    );
+  }
+
+  ungiveItem(idList: string, idItem: string): Observable<any> {
+    const url = `${this.listUrl}/free/${idList}/${idItem}`
+    return this.http.put(
+      url,
+      {},
       {
         headers: {
           Authorization: `Bearer ${this.authService.getToken()}`

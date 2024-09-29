@@ -11,6 +11,7 @@ import { AccountComponent } from './user/account/account.component';
 import { ListComponent } from './list/list.component';
 import { ListSharedComponent } from './list/list-shared/list-shared.component';
 import { ListPageComponent } from './list/list-page/list-page.component';
+import { ListFriendsComponent } from './list/list-friends/list-friends.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'sharedlists',
     component: ListSharedComponent
+  },
+  {
+    path: 'friendsLists',
+    component: ListFriendsComponent
   },
   {
     path: 'catalogue',
