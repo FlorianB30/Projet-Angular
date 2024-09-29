@@ -16,6 +16,13 @@
         "description": "Description for Product 10",
         "price": 15.99,
         "giverId": null
+      },
+      {
+        "id": "da263194-d2a1-41b1-8598-37e80d0731f8",
+        "name": "Product 5",
+        "description": "Description for Product 5",
+        "price": 30.99,
+        "giverId": null
       }
     ],
     "shared": true
