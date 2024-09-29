@@ -7,8 +7,8 @@ import { AuthService } from 'src/app/auth/auth.service';
   providedIn: 'root'
 })
 export class ListService {
-  private listsUrl = 'http://localhost:3000/lists'
-  private sharedListsUrl = 'http://localhost:3000/sharedlists'
+  private listsUrl = 'http://localhost:3000/list'
+  private sharedListsUrl = 'http://localhost:3000/sharedlist'
   private selectedListsSource = new BehaviorSubject<any | null>(null);
   selectedLists$ = this.selectedListsSource.asObservable();
   private listsSource = new BehaviorSubject<any>([]);
