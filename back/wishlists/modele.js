@@ -141,6 +141,16 @@ const getLists = (req, res) => {
     });
 };
 
+const getSharedLists = (req, res) => {
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const sharedLists = lists.filter(list => list.shared === true);
+        res.json(sharedLists);
+    });
+};
+
 const getMyLists = (req, res) => {
     const idUser = req.user.id;
     readListsFromFile((err, lists) => {
@@ -364,5 +374,6 @@ module.exports = {
     updateItemFromList,
     reserveItem,
     freeItem,
-    getMyFriendsLists
+    getMyFriendsLists,
+    getSharedLists
 };
