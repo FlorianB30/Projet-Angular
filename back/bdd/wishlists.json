@@ -192,5 +192,19 @@
     "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
     "shared": false,
     "items": []
+  },
+  {
+    "name": "testpub",
+    "id": "415fc49c-b122-4378-a775-e65cbe3c1909",
+    "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
+    "shared": true,
+    "items": []
+  },
+  {
+    "name": "testpriv",
+    "id": "2d595fdb-6ec1-45f4-840f-dcca55ee0d50",
+    "idUser": "cb3d3c8c-ce1f-4e02-a4dd-9f6df88bd4eb",
+    "shared": false,
+    "items": []
   }
 ]

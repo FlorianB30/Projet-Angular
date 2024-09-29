@@ -1,20 +1,35 @@
+<section>
 <div [formGroup]="formList">
     <h3>Nouvelle liste</h3>
     <label>Nom de la liste</label>
     <input type="text" formControlName="name"/> 
     <label>Partager ma liste : </label>
     <input type="checkbox" formControlName="shared"/>
-    <button (click)="createList()">Créer ma liste</button>
+    <button (click)="createList()">Créer une liste</button>
 </div>
-
-<div *ngFor="let list of lists$ | async">
-    <h3>{{list.name}}</h3>
-    <p>{{list.items.length}} item(s)</p>
-    <p *ngIf="list.shared">Cette liste est partagée</p>
-    <button *ngIf="list.shared" (click)="changeListStatus(false, list.id)">Passer en privée</button>
-    <p *ngIf="!list.shared">Cette liste est privée</p>
-    <button *ngIf="!list.shared" (click)="changeListStatus(true, list.id)">Passer en pubic</button>
-    <a href="{{'list/'+list.id}}">Voir la liste</a>
-    <button (click)="deleteList(list.id)" >supprimer la liste</button>
-</div>
-
+</section>
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ "catalogue.name" | translate }}</th>
+          <th>length</th>
+          <th>{{ "catalogue.action" | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of lists$ | async">
+          <td>{{ list.name }}</td>
+          <td>{{list.items.length}} item(s)</td>
+          <td>
+            <p *ngIf="list.shared">Cette liste est partagée</p>
+            <button *ngIf="list.shared" (click)="changeListStatus(false, list.id)">Passer en privée</button>
+            <p *ngIf="!list.shared">Cette liste est privée</p>
+            <button *ngIf="!list.shared" (click)="changeListStatus(true, list.id)">Passer en pubic</button>
+            <button (click)="deleteList(list.id)" >supprimer la liste</button>
+            <a href="{{'list/'+list.id}}">Voir la liste</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

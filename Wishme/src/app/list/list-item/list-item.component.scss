@@ -1,0 +1,53 @@
+/* Conteneur pour les détails de l'item */
+.item-detail {
+    background-color: #ffffff; /* Fond blanc */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    padding: 20px; /* Espacement intérieur */
+    margin: 15px 0; /* Espacement extérieur entre les items */
+}
+
+/* Styles pour le titre de l'item */
+.item-detail h2 {
+    font-size: 1.5em; /* Taille de police du titre */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 10px; /* Marge en bas du titre */
+}
+
+/* Styles pour les paragraphes */
+.item-detail p {
+    margin: 5px 0; /* Marge verticale */
+    color: #666; /* Couleur grise pour le texte */
+}
+
+/* Styles pour le prix */
+.item-detail p:last-child {
+    font-weight: bold; /* Texte en gras pour le prix */
+    color: #4CAF50; /* Couleur verte pour le prix */
+}
+
+/* Styles pour les boutons */
+.item-detail button {
+    background-color: #007BFF; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    border: none; /* Pas de bordure */
+    padding: 10px 15px; /* Espace intérieur */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en main */
+    transition: background-color 0.3s ease; /* Transition douce pour le survol */
+    margin-right: 5px; /* Espacement entre les boutons */
+}
+
+/* Effet de survol sur les boutons */
+.item-detail button:hover {
+    background-color: #0056b3; /* Couleur au survol */
+}
+
+/* Styles pour les boutons d'annulation d'offre */
+button.ungive {
+    background-color: #dc3545; /* Couleur rouge pour annuler l'offre */
+}
+
+button.ungive:hover {
+    background-color: #c82333; /* Couleur au survol pour annuler l'offre */
+}

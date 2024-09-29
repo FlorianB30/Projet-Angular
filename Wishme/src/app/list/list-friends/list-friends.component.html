@@ -1,5 +1,20 @@
-<div *ngFor="let list of lists$ | async">
-    <h3>{{list.name}}</h3>
-    <p>{{list.items.length}} item(s)</p>
-    <a href="{{'list/'+list.id}}">Voir la liste</a>
-</div>
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ "catalogue.name" | translate }}</th>
+          <th>length</th>
+          <th>{{ "catalogue.action" | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of lists$ | async">
+          <td>{{ list.name }}</td>
+          <td>{{list.items.length}} item(s)</td>
+          <td>
+            <a href="{{'list/'+list.id}}">Voir la liste</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

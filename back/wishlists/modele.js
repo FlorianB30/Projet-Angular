@@ -195,6 +195,16 @@ const getListById = (req, res) => {
     });
 };
 
+const getSharedLists = (req, res) => {
+    readListsFromFile((err, lists) => {
+        if (err) {
+            return res.status(500).json({ message: err.message });
+        }
+        const sharedLists = lists.filter(list => list.shared === true);
+        res.json(sharedLists);
+    });
+};
+
 const addItemInList = (req, res) => {
     const idUser = req.user.id;
     const { id } = req.params;
