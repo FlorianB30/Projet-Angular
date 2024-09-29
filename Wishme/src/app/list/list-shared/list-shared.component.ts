@@ -8,9 +8,12 @@ import { ListService } from 'src/app/shared/services/list.service';
   styleUrls: ['./list-shared.component.scss']
 })
 export class ListSharedComponent {
-  sharedLists$!: Observable<any>;
+  lists$!: Observable<any>;
 
-  constructor(private listService: ListService) {
-    this.sharedLists$ = this.listService.getSharedLists();
+  constructor(
+    private listService: ListService
+  ) {
+    this.lists$ = this.listService.getSharedLists();
   }
+
 }

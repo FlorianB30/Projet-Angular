@@ -1,5 +1,7 @@
-<div *ngFor="let list of sharedLists$ | async">
+<div *ngFor="let list of lists$ | async">
     <h3>{{list.name}}</h3>
     <p>{{list.items.length}} item(s)</p>
+    <p *ngIf="list.shared">Cette liste est partagée</p>
     <a href="{{'lists/'+list.id}}">Voir la liste</a>
 </div>
+

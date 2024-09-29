@@ -34,7 +34,7 @@ const routes: Routes = [
     component: ListComponent
   },
   {
-    path: 'lists/:id',
+    path: 'list/:listId',
     component: ListPageComponent
   },
   {
@@ -46,7 +46,11 @@ const routes: Routes = [
     component: CatalogueComponent
   },
   {
-    path: 'catalogue/:id',
+    path: 'catalogue/:listId',
+    component: CatalogueComponent
+  },
+  {
+    path: 'item/:id',
     component: ItemComponent
   },
   {

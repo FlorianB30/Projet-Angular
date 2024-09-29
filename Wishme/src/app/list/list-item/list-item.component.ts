@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ListItemComponent {
   @Input() item!: any;
-  @Output() idItemToDelete = new EventEmitter<number>;
+  @Output() idItemToDelete = new EventEmitter<string>;
 
   deleteItemFromList(): void {
     this.idItemToDelete.emit(this.item.id)

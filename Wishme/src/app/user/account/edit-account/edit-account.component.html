@@ -1,17 +1,17 @@
-  <section class="overlay">
-    <div class="modal-content">
-      <button class="close-button" (click)="close()">✖</button>
-      <h2>{{ "editAccount.title" | translate }}</h2>
-      <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
-        <div>
-          <label for="name">{{ "editAccount.name" | translate }}:</label>
-          <input id="name" formControlName="name" type="text">
-        </div>
-        <div>
-          <label for="email">{{ "editAccount.email" | translate }}:</label>
-          <input id="email" formControlName="email">
-        </div>
-        <button type="submit">{{ "editAccount.edit" | translate }}</button>
-      </form>
-    </div>
-  </section>
+<section class="overlay">
+  <div class="modal-content">
+    <button class="close-button" (click)="close()">✖</button>
+    <h2>{{ "editAccount.title" | translate }}</h2>
+    <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">{{ "editAccount.name" | translate }}:</label>
+        <input id="name" formControlName="name" type="text">
+      </div>
+      <div>
+        <label for="email">{{ "editAccount.email" | translate }}:</label>
+        <input id="email" formControlName="email">
+      </div>
+      <button type="submit">{{ "editAccount.edit" | translate }}</button>
+    </form>
+  </div>
+</section>

@@ -18,7 +18,7 @@
           <button *ngIf="item.id" (click)="viewDescription(item.id)">{{ "catalogue.description" | translate }}</button>
           <button (click)="editItem(item)">{{ "catalogue.modify" | translate }}</button>
           <button *ngIf="item.id" (click)="deleteItem(item.id)">{{ "catalogue.delete" | translate }}</button>
-          <button *ngIf="forList" >{{ "Ajouter l'item" | translate }}</button>
+          <button *ngIf="listId" (click)="addItemToList(item)">{{ "Ajouter l'item" | translate }}</button>
         </td>
       </tr>
     </tbody>

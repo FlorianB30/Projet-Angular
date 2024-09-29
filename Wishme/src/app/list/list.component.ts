@@ -16,7 +16,7 @@ export class ListComponent {
   });
 
   constructor(private listService: ListService) {
-    this.lists$ = this.listService.getListByUser();
+    this.lists$ = this.listService.getMyLists();
   }
 
   createList(): void {
@@ -28,5 +28,11 @@ export class ListComponent {
       items: []
     }
     this.listService.createList(list);
+    this.lists$ = this.listService.getMyLists();
+  }
+  changeListStatus(status: boolean, id: string){
+    this.listService.changeListStatus(status, id).subscribe(() => {
+      this.lists$ = this.listService.getMyLists();
+    });
   }
 }

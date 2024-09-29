@@ -21,6 +21,12 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { ListItemComponent } from './list/list-item/list-item.component';
 import { ListPageComponent } from './list/list-page/list-page.component';
+import { ListSharedComponent } from './list/list-shared/list-shared.component';
+import { InfoAccountComponent } from './user/account/info-account/info-account.component'
+import { EditAccountComponent } from './user/account/edit-account/edit-account.component';
+import { DeleteAccountComponent } from './user/account/delete-account/delete-account.component';
+import { ConfirmComponent } from './shared/popup/confirm/confirm.component';
+import { AccountComponent } from './user/account/account.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -42,7 +48,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditItemComponent,
     ListComponent,
     ListItemComponent,
-    ListPageComponent
+    ListPageComponent,
+    ListSharedComponent,
+    InfoAccountComponent,
+    EditAccountComponent,
+    DeleteAccountComponent,
+    AccountComponent,
+    ConfirmComponent
+
   ],
   imports: [
     BrowserModule,
