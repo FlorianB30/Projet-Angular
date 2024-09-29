@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../shared/services/item.service';
 import { Item, Items } from '../shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListService } from '../shared/services/list.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -12,18 +13,23 @@ export class CatalogueComponent implements OnInit {
   catalogue: Items = [];
   isEditing = false;
   isAddding = false;
-  forList: boolean = false;
   currentPage: number = 1;
   itemsPerPage: number = 10;
+  listId: string | null = null;
 
   constructor(
     private itemService: ItemService,
+    private listService: ListService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.loadCatalogue();
+    this.route.paramMap.subscribe(params => {
+      this.listId = params.get('listId');
+      this.loadCatalogue();
+    });
   }
 
   loadCatalogue(): void {
@@ -32,9 +38,16 @@ export class CatalogueComponent implements OnInit {
       this.catalogue = items
     });
   }
+  addItemToList(item: Item): void {
+    if(this.listId){
+      this.listService.addItemToList(item, this.listId)
+      this.router.navigate(['/list', this.listId], { relativeTo: this.route });
+    }
+    
+  }
 
   viewDescription(itemId: string): void {
-    this.router.navigate(['/catalogue', itemId], { relativeTo: this.route });
+    this.router.navigate(['/item', itemId], { relativeTo: this.route });
   }
   editItem(selectedItem: Item): void {
     this.isEditing = true;

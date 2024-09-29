@@ -1,5 +1,3 @@
-<p *ngIf="sharedList">Cette liste est partagée</p>
+<app-list-item *ngFor="let item of list.items" [item]="item" (idItemToDelete)="handleDelete($event)"></app-list-item>
 
-<app-list-item *ngFor="let item of listItems" [item]="item"></app-list-item>
-
-<button>Ouvrir le catalogue (dans le catalogue add item to list)</button>
+<button (click)="openCatalogue()">Ouvrir le catalogue</button>

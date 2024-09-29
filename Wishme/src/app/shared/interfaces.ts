@@ -16,3 +16,12 @@ export interface Item {
 }
 
 export interface Items extends Array<Item>{}
+
+export interface List {
+  id: string | null;
+  name: string;
+  idUser: string | null;
+  items: Items
+  shared: boolean;
+}
+export interface Lists extends Array<List>{}

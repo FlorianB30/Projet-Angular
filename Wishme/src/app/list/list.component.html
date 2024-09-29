@@ -11,6 +11,9 @@
     <h3>{{list.name}}</h3>
     <p>{{list.items.length}} item(s)</p>
     <p *ngIf="list.shared">Cette liste est partagée</p>
-    <a href="{{'lists/'+list.id}}">Voir la liste</a>
+    <button *ngIf="list.shared" (click)="changeListStatus(false, list.id)">Passer en privée</button>
+    <p *ngIf="!list.shared">Cette liste est privée</p>
+    <button *ngIf="!list.shared" (click)="changeListStatus(true, list.id)">Passer en pubic</button>
+    <a href="{{'list/'+list.id}}">Voir la liste</a>
 </div>
 
